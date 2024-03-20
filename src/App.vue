@@ -16,7 +16,7 @@
           </details>
         </li>
       </ul>
-    </div>
+    </div> 
   </div>
   <RouterView> </RouterView>
 </template>
