@@ -1,22 +1,52 @@
 <template>
-  <div class="navbar bg-base-100">
-    <div class="flex-1">
-      <a class="btn btn-ghost text-xl">daisyUI</a>
+  <section id="Navbar" class="fixed top-0 w-full z-50">
+    <div class="navbar bg-gradient">
+      <div class="navbar-start text-neutral-content">
+        <a class="btn btn-ghost text-2xl">ARTISTVERSE</a>
+      </div>
+      <div class="navbar-end">
+        <div class="dropdown">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-7 w-7"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h7"
+              />
+            </svg>
+          </div>
+          <ul
+            tabindex="0"
+            class="menu menu-lg dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-70 right-0 left-auto"
+          >
+            <router-link to="/"
+              ><li><a>Homepage</a></li></router-link
+            >
+            <router-link to="/laundrystation"
+              ><li><a>Laundry Station</a></li></router-link
+            >
+            <li><a>Delivery</a></li>
+            <li><a>Contact us</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="flex-none">
-      <ul class="menu menu-horizontal px-1">
-        <li><a>Link</a></li>
-        <li>
-          <details>
-            <summary>Parent</summary>
-            <ul class="p-2 bg-base-100 rounded-t-none">
-              <li><a>Link 1</a></li>
-              <li><a>Link 2</a></li>
-            </ul>
-          </details>
-        </li>
-      </ul>
-    </div> 
-  </div>
-  <RouterView> </RouterView>
+  </section>
+
+  <RouterView></RouterView>
 </template>
+
+<style scoped>
+.navbar {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0));
+}
+
+/* Other styles for the navbar content */
+</style>
