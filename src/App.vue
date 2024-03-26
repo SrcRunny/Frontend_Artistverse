@@ -2,7 +2,10 @@
   <section id="Navbar" class="fixed top-0 w-full z-50">
     <div class="navbar bg-gradient">
       <div class="navbar-start text-neutral-content">
-        <a class="btn btn-ghost text-2xl">ARTISTVERSE</a>
+        <router-link to="/">
+          <a class="btn btn-ghost text-2xl">ARTISTVERSE</a>
+        </router-link>
+        <span class="page-name ml-4 text-xl font-semibold">{{ $route.meta.title }}</span>
       </div>
       <div class="navbar-end">
         <div class="dropdown">
@@ -29,8 +32,8 @@
             <router-link to="/"
               ><li><a>Homepage</a></li></router-link
             >
-            <router-link to="/laundrystation"
-              ><li><a>Laundry Station</a></li></router-link
+            <router-link to="/generate-lyrics"
+              ><li><a>Lyrics Generate</a></li></router-link
             >
             <li><a>Delivery</a></li>
             <li><a>Contact us</a></li>
@@ -42,7 +45,6 @@
 
   <RouterView></RouterView>
 </template>
-
 <style scoped>
 .navbar {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0));
