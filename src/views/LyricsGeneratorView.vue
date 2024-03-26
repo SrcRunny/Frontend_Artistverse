@@ -1,6 +1,5 @@
 <template>
   <div class="container mx-auto p-4">
-
     <label class="block mb-2" for="seedText">Seed Text:</label>
     <input
       class="w-full mb-4 p-2 border border-gray-300 rounded-md"
@@ -30,7 +29,7 @@
         <h4 class="text-gray-800" v-if="index === 1">Chorus</h4>
         <h4 class="text-gray-800" v-if="index === 2">Verse 2</h4>
         <p class="text-gray-800">{{ section }}</p>
-        <br>
+        <br />
       </div>
     </div>
   </div>
