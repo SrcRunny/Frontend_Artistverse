@@ -4,6 +4,7 @@ import videoSrc2 from '../video/1.mp4'
 import videoSrc3 from '../video/3.mp4'
 import videoSrc5 from '../video/5.mp4'
 import videoSrc4 from '../video/4.mp4'
+import 'animate.css'
 
 export default {
   data() {
@@ -14,31 +15,38 @@ export default {
           head: 'WE ARE',
           videoSrc: videoSrc, // Change to your video source URL
           title: 'ARTISTVERSE',
-          description: 'Your description for Slider 01'
+          description: 'Your description for Slider 01',
+          image:
+            'https://png.pngtree.com/thumb_back/fw800/background/20220709/pngtree-abstract-lowpoly-data-visualization-on-dark-background-ai-contemporary-cell-photo-image_37843356.jpg'
         },
         {
           head: 'Together,',
           videoSrc: videoSrc2,
           title: 'Lets Rock!!!',
-          description: 'Your description for Slider 01'
+          description: 'Your description for Slider 01',
+          image:
+            'https://lafransatravellers.com/wp-content/uploads/2019/03/actuacion-actuacion-en-vivo-artistas-1763075.jpg'
         },
         {
           head: 'Feeling',
           videoSrc: videoSrc3,
           title: 'Lyrics with emotion',
-          description: 'Your description for Slider 01'
+          description: 'Your description for Slider 01',
+          image: 'https://i1.sndcdn.com/artworks-000542021190-mf72zi-t500x500.jpg'
         },
         {
           head: 'Feature,',
           videoSrc: videoSrc4,
           title: 'Lyrics Generater',
-          description: 'Your description for Slider 01'
+          description: 'Your description for Slider 01',
+          image: 'https://i.pinimg.com/564x/bb/d9/51/bbd9514ebd85ab44b11e022bf7d1a321.jpg'
         },
         {
           head: 'let',
           videoSrc: videoSrc5,
           title: 'Contact us',
-          description: 'Your description for Slider 01'
+          description: 'Your description for Slider 01',
+          image: 'https://i.pinimg.com/564x/f1/ef/2d/f1ef2ddd07e4fab9c75f262ae5526245.jpg'
         }
       ],
       intervalId: null
@@ -106,7 +114,7 @@ export default {
     <button @click="nextSlider">&#62;</button>
   </div>
 
-  <div class="thumbnail">
+  <div class="thumbnail animate__animated animate__fadeInUp">
     <div
       v-for="(item, index) in items"
       :key="index"
@@ -115,7 +123,7 @@ export default {
       @click="setActive(index)"
     >
       <!-- Change image to video -->
-      <video :src="item.videoSrc" muted loop></video>
+      <img :src="item.image" />
       <div class="content">{{ item.title }}</div>
     </div>
   </div>
@@ -304,7 +312,9 @@ export default {
 .slider .list .item.active p:nth-child(1),
 .slider .list .item.active h2,
 .slider .list .item.active p:nth-child(3),
-.slider .list .item.active .fancy {
+.slider .list .item.active .fancy,
+.animate__animated.animate__fadeInUp,
+.arrows button {
   transform: translateY(30px);
   filter: blur(20px);
   opacity: 0;
@@ -372,7 +382,7 @@ export default {
   border: rgb(255, 255, 255) 3px solid;
   border-radius: 10px;
 }
-.thumbnail .item video {
+.thumbnail .item img {
   width: 100%;
   height: 100%;
   object-fit: cover;

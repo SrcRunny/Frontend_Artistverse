@@ -58,7 +58,6 @@ export default {
           })
         })
         const data = await response.json()
-        // Access the correct keys from the response data
         const { verse1, chorus, verse2 } = data
         // Assign the verses to generatedLyrics array
         this.generatedLyrics = [verse1, chorus, verse2]
