@@ -13,9 +13,10 @@ export default {
       items: [
         {
           head: 'WE ARE',
-          videoSrc: videoSrc, // Change to your video source URL
+          videoSrc: videoSrc,
           title: 'ARTISTVERSE',
-          description: 'Your description for Slider 01',
+          description:
+            'Music is the art form that combines rhythm and sound to form a functional melodic line. Music itself transcends time, space, and cultures.',
           image:
             'https://png.pngtree.com/thumb_back/fw800/background/20220709/pngtree-abstract-lowpoly-data-visualization-on-dark-background-ai-contemporary-cell-photo-image_37843356.jpg'
         },
@@ -23,29 +24,29 @@ export default {
           head: 'Together,',
           videoSrc: videoSrc2,
           title: 'Lets Rock!!!',
-          description: 'Your description for Slider 01',
+          description: 'Music is the art form that combines rhythm and sound to form a functional melodic line. Music itself transcends time, space, and cultures.',
           image:
             'https://lafransatravellers.com/wp-content/uploads/2019/03/actuacion-actuacion-en-vivo-artistas-1763075.jpg'
         },
         {
           head: 'Feeling',
           videoSrc: videoSrc3,
-          title: 'Lyrics with emotion',
-          description: 'Your description for Slider 01',
+          title: 'Emotion',
+          description: 'Music is the art form that combines rhythm and sound to form a functional melodic line. Music itself transcends time, space, and cultures.',
           image: 'https://i1.sndcdn.com/artworks-000542021190-mf72zi-t500x500.jpg'
         },
         {
           head: 'Feature,',
           videoSrc: videoSrc4,
-          title: 'Lyrics Generater',
-          description: 'Your description for Slider 01',
+          title: 'Generator',
+          description: 'Music is the art form that combines rhythm and sound to form a functional melodic line. Music itself transcends time, space, and cultures.',
           image: 'https://i.pinimg.com/564x/bb/d9/51/bbd9514ebd85ab44b11e022bf7d1a321.jpg'
         },
         {
           head: 'let',
           videoSrc: videoSrc5,
           title: 'Contact us',
-          description: 'Your description for Slider 01',
+          description: 'Music is the art form that combines rhythm and sound to form a functional melodic line. Music itself transcends time, space, and cultures.',
           image: 'https://i.pinimg.com/564x/f1/ef/2d/f1ef2ddd07e4fab9c75f262ae5526245.jpg'
         }
       ],
@@ -91,7 +92,6 @@ export default {
         class="item"
         :class="{ active: index === activeIndex }"
       >
-        <!-- Change image to video -->
         <video :src="item.videoSrc" muted autoplay loop></video>
         <div class="content">
           <p>{{ item.head }}</p>
