@@ -1,7 +1,7 @@
 <template>
   <div class="background">
     <div class="container">
-      <h1 class="title">CHOOSE LYRICS STYLE</h1>
+      <h1 class="title">ARTIST</h1>
       <div class="slider-wrapper">
         <ul class="image-list" ref="imageList">
           <li v-for="(image, index) in images" :key="index" class="image-item">
@@ -133,9 +133,11 @@ export default {
 .title {
   text-align: center;
   color: #fff;
-  font-size: 2rem;
+  font-size: 5rem;
   margin-bottom: 20px;
-  font-family: 'Anton', sans-serif;
+  font-family: 'Tac One', sans-serif;
+  font-weight: 500;
+  font-style: normal;
   letter-spacing: 2px;
 }
 
