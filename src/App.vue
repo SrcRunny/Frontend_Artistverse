@@ -15,7 +15,7 @@
               class="h-7 w-7"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="currentColor"
+              stroke="#ffffff"
             >
               <path
                 stroke-linecap="round"
@@ -32,7 +32,7 @@
             <router-link to="/"
               ><li><a>Homepage</a></li></router-link
             >
-            <router-link to="/generate-lyrics"
+            <router-link to="/layoutview"
               ><li><a>Lyrics Generate</a></li></router-link
             >
             <li><a>Delivery</a></li>

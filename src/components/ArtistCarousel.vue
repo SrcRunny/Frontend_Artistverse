@@ -1,8 +1,8 @@
 <template>
   <div class="background">
     <div class="container">
-      <h1 class="title">ARTIST</h1>
-      <div class="slider-wrapper">
+      <h1 class="title animate__animated animate__fadeInDown">ARTIST</h1>
+      <div class="slider-wrapper animate__animated animate__fadeInDown animate__delay-1s">
         <ul class="image-list" ref="imageList">
           <li
             v-for="(image, index) in images"
@@ -20,33 +20,37 @@
           </li>
         </ul>
       </div>
-      <div class="slider-scrollbar">
+      <div class="slider-scrollbar animate__animated animate__fadeInDown animate__delay-1s">
         <div class="scrollbar-track">
           <div class="scrollbar-thumb" ref="scrollbarThumb"></div>
         </div>
       </div>
+      <h1 class="title2 animate__animated animate__fadeInUp animate__delay-2s">Those, who bring art to people</h1>
+      <h1 class="title3 animate__animated animate__fadeInUp animate__delay-3s">with open eyes and open ears</h1>
     </div>
   </div>
 </template>
 
 <script>
+import 'animate.css'
+
 export default {
   data() {
     return {
       images: [
         {
-          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto',
-          description: 'Taylor Swift. sadaskdl;asdasdasdasd asdasdasdasdd',
+          src: 'https://e.snmc.io/i/600/s/90365538208c58d25109e5b52bd44651/11492161/taylor-swift-1989-taylors-version-Cover-Art.jpg',
+          description: 'Taylor Swift',
           showPopup: false
         },
         {
-          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto',
-          description: 'Description for image 2',
+          src: 'https://i.pinimg.com/564x/d7/03/b8/d703b83b1df5f755d355d623599de3e8.jpg',
+          description: 'Billie Eilish',
           showPopup: false
         },
         {
-          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto',
-          description: 'Description for image 3',
+          src: 'https://i.pinimg.com/736x/a1/33/db/a133db3be3edf41ead3bad133e64fd2a.jpg',
+          description: 'Ed Sheeran',
           showPopup: false
         },
         {
@@ -168,32 +172,37 @@ export default {
 
 <style scoped>
 .popup {
+  text-align: center;
+  margin-top: 10px;
+  border-radius: 30px;
+  padding: 15px;
   position: relative;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(21, 22, 22, 0.8);
   color: #fff;
-  padding-left: 20px;
-  padding-top: 20px;
-  padding-bottom: 60px;
-  font-size: 14px;
+  font-size: 1.2rem;
+  font-family: 'Outfit', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 3px;
   visibility: hidden;
   opacity: 0;
   transition:
     visibility 0s,
-    opacity 0.5s linear;
-  max-width: 150px; /* Adjust the max-width as needed */
-  white-space: normal; /* Allow text to wrap */
-  bottom: -60px; /* Position popup initially */
+    opacity 0.5s linear,
+    transform 0.8s ease;
+  max-width: 100%;
+  white-space: normal;
+  bottom: -60px;
+  z-index: 1;
+  transform: translateY(20px);
 }
 
 .image-item:hover .popup {
   visibility: visible;
   opacity: 1;
-  bottom: 0; /* Adjust position on hover */
-}
-
-.image-item:hover .popup {
-  visibility: visible;
-  opacity: 1;
+  bottom: 0;
+  transform: translateY(0);
 }
 
 * {
@@ -210,6 +219,33 @@ export default {
   font-weight: 500;
   font-style: normal;
   letter-spacing: 2px;
+  animation-duration: 2s; /* don't forget to set a duration! */
+  
+}
+.title2 {
+  position: relative;
+  text-align: center;
+  color: #797777;
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 2px;
+  top: 70px;
+  animation-duration: 2s; /* don't forget to set a duration! */
+
+}
+
+.title3 {
+  position: relative;
+  text-align: center;
+  color: #797777;
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 2px;
+  top: 70px;
+  animation-duration: 2s; /* don't forget to set a duration! */
+
 }
 
 .background {
@@ -231,6 +267,8 @@ export default {
 
 .slider-wrapper {
   position: relative;
+  animation-duration: 2s; /* don't forget to set a duration! */
+
 }
 
 .slider-wrapper .slide-button {
@@ -292,12 +330,16 @@ export default {
 
 .hover-image:hover {
   border-radius: 50%;
+  border: 1px solid rgb(104, 102, 102);
 }
+
 .container .slider-scrollbar {
   height: 24px;
   width: 100%;
   display: flex;
   align-items: center;
+  animation-duration: 2s; /* don't forget to set a duration! */
+
 }
 
 .slider-scrollbar .scrollbar-track {
@@ -316,7 +358,7 @@ export default {
 
 .slider-scrollbar .scrollbar-thumb {
   position: absolute;
-  background: #000;
+  background: #d4ec4c;
   top: 0;
   bottom: 0;
   width: 30%;
