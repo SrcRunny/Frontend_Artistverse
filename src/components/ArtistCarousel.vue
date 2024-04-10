@@ -4,15 +4,19 @@
       <h1 class="title">ARTIST</h1>
       <div class="slider-wrapper">
         <ul class="image-list" ref="imageList">
-          <li v-for="(image, index) in images" :key="index" class="image-item">
+          <li
+            v-for="(image, index) in images"
+            :key="index"
+            class="image-item"
+            @mouseover="showPopup(index)"
+          >
             <img
               :src="image.src"
               :alt="'img-' + (index + 1)"
               class="hover-image"
-              @mouseover="showPopup(index)"
               @mouseleave="hidePopup(index)"
             />
-            <div class="popup" v-if="image.showPopup">{{ image.description }}</div>
+            <div class="popup" :class="{ active: image.showPopup }">{{ image.description }}</div>
           </li>
         </ul>
       </div>
@@ -148,6 +152,11 @@ export default {
       })
     },
     showPopup(index) {
+      // Hide all popups first
+      this.images.forEach((image) => {
+        image.showPopup = false
+      })
+      // Show popup for the hovered image
       this.images[index].showPopup = true
     },
     hidePopup(index) {
@@ -159,7 +168,7 @@ export default {
 
 <style scoped>
 .popup {
-  position: absolute;
+  position: relative;
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
   padding-left: 20px;
@@ -171,14 +180,22 @@ export default {
   transition:
     visibility 0s,
     opacity 0.5s linear;
-    max-width: 150px; /* Adjust the max-width as needed */
+  max-width: 150px; /* Adjust the max-width as needed */
   white-space: normal; /* Allow text to wrap */
+  bottom: -60px; /* Position popup initially */
+}
+
+.image-item:hover .popup {
+  visibility: visible;
+  opacity: 1;
+  bottom: 0; /* Adjust position on hover */
 }
 
 .image-item:hover .popup {
   visibility: visible;
   opacity: 1;
 }
+
 * {
   margin: 0;
   padding: 0;
