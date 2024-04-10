@@ -32,7 +32,7 @@ export default {
       images: [
         {
           src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto',
-          description: 'Description for image 1',
+          description: 'Taylor Swift. sadaskdl;asdasdasdasd asdasdasdasdd',
           showPopup: false
         },
         {
@@ -162,14 +162,17 @@ export default {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
-  padding: 10px;
-  border-radius: 5px;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 60px;
   font-size: 14px;
   visibility: hidden;
   opacity: 0;
   transition:
     visibility 0s,
     opacity 0.5s linear;
+    max-width: 150px; /* Adjust the max-width as needed */
+  white-space: normal; /* Allow text to wrap */
 }
 
 .image-item:hover .popup {
