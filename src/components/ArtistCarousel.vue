@@ -5,7 +5,14 @@
       <div class="slider-wrapper">
         <ul class="image-list" ref="imageList">
           <li v-for="(image, index) in images" :key="index" class="image-item">
-            <img :src="image.src" :alt="'img-' + (index + 1)" class="hover-image" />
+            <img
+              :src="image.src"
+              :alt="'img-' + (index + 1)"
+              class="hover-image"
+              @mouseover="showPopup(index)"
+              @mouseleave="hidePopup(index)"
+            />
+            <div class="popup" v-if="image.showPopup">{{ image.description }}</div>
           </li>
         </ul>
       </div>
@@ -24,34 +31,54 @@ export default {
     return {
       images: [
         {
-          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto'
+          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto',
+          description: 'Description for image 1',
+          showPopup: false
         },
         {
-          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto'
+          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto',
+          description: 'Description for image 2',
+          showPopup: false
         },
         {
-          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto'
+          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto',
+          description: 'Description for image 3',
+          showPopup: false
         },
         {
-          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto'
+          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto',
+          description: 'Description for image 4',
+          showPopup: false
         },
         {
-          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto'
+          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto',
+          description: 'Description for image 5',
+          showPopup: false
         },
         {
-          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto'
+          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto',
+          description: 'Description for image 6',
+          showPopup: false
         },
         {
-          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto'
+          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto',
+          description: 'Description for image 1',
+          showPopup: false
         },
         {
-          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto'
+          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto',
+          description: 'Description for image 1',
+          showPopup: false
         },
         {
-          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto'
+          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto',
+          description: 'Description for image 1',
+          showPopup: false
         },
         {
-          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto'
+          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto',
+          description: 'Description for image 1',
+          showPopup: false
         }
       ],
       maxScrollLeft: 0
@@ -119,12 +146,36 @@ export default {
         updateScrollThumbPosition()
         handleSlideButtons()
       })
+    },
+    showPopup(index) {
+      this.images[index].showPopup = true
+    },
+    hidePopup(index) {
+      this.images[index].showPopup = false
     }
   }
 }
 </script>
 
 <style scoped>
+.popup {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    visibility 0s,
+    opacity 0.5s linear;
+}
+
+.image-item:hover .popup {
+  visibility: visible;
+  opacity: 1;
+}
 * {
   margin: 0;
   padding: 0;
