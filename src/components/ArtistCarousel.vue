@@ -4,20 +4,22 @@
       <h1 class="title animate__animated animate__fadeInDown">ARTIST</h1>
       <div class="slider-wrapper animate__animated animate__fadeInDown animate__delay-1s">
         <ul class="image-list" ref="imageList">
-          <li
+          <router-link
             v-for="(image, index) in images"
             :key="index"
-            class="image-item"
-            @mouseover="showPopup(index)"
+            :to="`/artist/${index}`" 
+            class="image-link"
           >
-            <img
-              :src="image.src"
-              :alt="'img-' + (index + 1)"
-              class="hover-image"
-              @mouseleave="hidePopup(index)"
-            />
-            <div class="popup" :class="{ active: image.showPopup }">{{ image.description }}</div>
-          </li>
+            <li class="image-item" @mouseover="showPopup(index)">
+              <img
+                :src="image.src"
+                :alt="'img-' + (index + 1)"
+                class="hover-image"
+                @mouseleave="hidePopup(index)"
+              />
+              <div class="popup" :class="{ active: image.showPopup }">{{ image.description }}</div>
+            </li>
+          </router-link>
         </ul>
       </div>
       <div class="slider-scrollbar animate__animated animate__fadeInDown animate__delay-1s">
@@ -25,8 +27,12 @@
           <div class="scrollbar-thumb" ref="scrollbarThumb"></div>
         </div>
       </div>
-      <h1 class="title2 animate__animated animate__fadeInUp animate__delay-2s">Those, who bring art to people</h1>
-      <h1 class="title3 animate__animated animate__fadeInUp animate__delay-3s">with open eyes and open ears</h1>
+      <h1 class="title2 animate__animated animate__fadeInUp animate__delay-2s">
+        Those, who bring art to people
+      </h1>
+      <h1 class="title3 animate__animated animate__fadeInUp animate__delay-3s">
+        with open eyes and open ears
+      </h1>
     </div>
   </div>
 </template>
@@ -220,7 +226,6 @@ export default {
   font-style: normal;
   letter-spacing: 2px;
   animation-duration: 2s; /* don't forget to set a duration! */
-  
 }
 .title2 {
   position: relative;
@@ -232,7 +237,6 @@ export default {
   letter-spacing: 2px;
   top: 70px;
   animation-duration: 2s; /* don't forget to set a duration! */
-
 }
 
 .title3 {
@@ -245,7 +249,6 @@ export default {
   letter-spacing: 2px;
   top: 70px;
   animation-duration: 2s; /* don't forget to set a duration! */
-
 }
 
 .background {
@@ -268,12 +271,11 @@ export default {
 .slider-wrapper {
   position: relative;
   animation-duration: 2s; /* don't forget to set a duration! */
-
 }
 
 .slider-wrapper .slide-button {
   position: absolute;
-  top: 50%;
+  top: 41%;
   outline: none;
   border: none;
   height: 50px;
@@ -282,12 +284,12 @@ export default {
   color: #fff;
   display: flex;
   cursor: pointer;
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   background: #000;
-  align-items: center;
   justify-content: center;
   border-radius: 50%;
   transform: translateY(-50%);
+  
 }
 
 .slider-wrapper .slide-button:hover {
@@ -339,7 +341,6 @@ export default {
   display: flex;
   align-items: center;
   animation-duration: 2s; /* don't forget to set a duration! */
-
 }
 
 .slider-scrollbar .scrollbar-track {

@@ -20,6 +20,11 @@ const router = createRouter({
       path: '/layoutview',
       name: 'layoutview',
       component: LayoutView
+    },
+    {
+      path: '/artist/0',
+      name: 'generate-lyrics',
+      component: LyricsGenerator
     }
   ]
 })
