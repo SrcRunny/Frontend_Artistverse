@@ -235,7 +235,7 @@ export default {
   font-weight: 500;
   font-style: normal;
   letter-spacing: 2px;
-  top: 70px;
+  margin-top: 2%;
   animation-duration: 2s; /* don't forget to set a duration! */
 }
 
@@ -247,7 +247,6 @@ export default {
   font-weight: 500;
   font-style: normal;
   letter-spacing: 2px;
-  top: 70px;
   animation-duration: 2s; /* don't forget to set a duration! */
 }
 
@@ -401,7 +400,7 @@ export default {
   }
 
   .slider-scrollbar .scrollbar-thumb {
-    width: 20%;
+    width: 15%;
   }
 }
 </style>
