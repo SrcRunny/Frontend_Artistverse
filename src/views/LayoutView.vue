@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-container">
+  <div class="layout">
     <div class="section1">
       <GsapGenerator></GsapGenerator>
     </div>
@@ -19,22 +19,29 @@ export default {
   name: 'LayoutView',
   components: {
     ArtistCarousel,
-    GsapGenerator,
+    GsapGenerator
     // EmotionSection
   }
 }
 </script>
 
 <style scoped>
-.layout-container {
+.layout {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .section1,
 .section2 {
-  width: 100%; /* Adjust width as needed */
-  padding: 20px; /* Add padding for spacing */
+  flex: 1;
+}
+
+/* Adjust styles for each section as needed */
+.section1 {
+  background-color: #f0f0f0;
+}
+
+.section2 {
+  background-color: #e0e0e0;
 }
 </style>

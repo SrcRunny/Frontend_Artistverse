@@ -7,7 +7,7 @@
           <router-link
             v-for="(image, index) in images"
             :key="index"
-            :to="`/artist/${index}`" 
+            :to="`/artist/${index}`"
             class="image-link"
           >
             <li class="image-item" @mouseover="showPopup(index)">
@@ -262,7 +262,7 @@ export default {
   max-width: 1200px;
   width: 100%;
   position: absolute;
-  top: 50%;
+  top: 250%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -288,7 +288,6 @@ export default {
   justify-content: center;
   border-radius: 50%;
   transform: translateY(-50%);
-  
 }
 
 .slider-wrapper .slide-button:hover {
