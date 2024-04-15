@@ -1,8 +1,13 @@
 <template>
   <div class="background">
     <div class="container">
-      <h1 class="title animate__animated animate__fadeInDown">ARTIST</h1>
-      <div class="slider-wrapper animate__animated animate__fadeInDown animate__delay-1s">
+      <h1 class="title" :class="{ 'animate__animated animate__fadeInDown': section2InView }">
+        ARTIST
+      </h1>
+      <div
+        class="slider-wrapper"
+        :class="{ 'animate__animated animate__fadeInDown animate__delay-1s': section2InView }"
+      >
         <ul class="image-list" ref="imageList">
           <router-link
             v-for="(image, index) in images"
@@ -22,15 +27,24 @@
           </router-link>
         </ul>
       </div>
-      <div class="slider-scrollbar animate__animated animate__fadeInDown animate__delay-1s">
+      <div
+        class="slider-scrollbar"
+        :class="{ 'animate__animated animate__fadeInDown animate__delay-1s': section2InView }"
+      >
         <div class="scrollbar-track">
           <div class="scrollbar-thumb" ref="scrollbarThumb"></div>
         </div>
       </div>
-      <h1 class="title2 animate__animated animate__fadeInUp animate__delay-2s">
+      <h1
+        class="title2"
+        :class="{ 'animate__animated animate__fadeInUp animate__delay-2s': section2InView }"
+      >
         Those, who bring art to people
       </h1>
-      <h1 class="title3 animate__animated animate__fadeInUp animate__delay-3s">
+      <h1
+        class="title3"
+        :class="{ 'animate__animated animate__fadeInUp animate__delay-3s': section2InView }"
+      >
         with open eyes and open ears
       </h1>
     </div>
@@ -43,6 +57,7 @@ import 'animate.css'
 export default {
   data() {
     return {
+      section2InView: false,
       images: [
         {
           src: 'https://e.snmc.io/i/600/s/90365538208c58d25109e5b52bd44651/11492161/taylor-swift-1989-taylors-version-Cover-Art.jpg',
@@ -100,6 +115,7 @@ export default {
   },
   mounted() {
     this.initSlider()
+    this.observeSection2()
   },
   methods: {
     initSlider() {
@@ -171,6 +187,20 @@ export default {
     },
     hidePopup(index) {
       this.images[index].showPopup = false
+    },
+    observeSection2() {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              this.section2InView = true
+              observer.unobserve(this.$el)
+            }
+          })
+        },
+        { threshold: 0.3 }
+      )
+      observer.observe(this.$el)
     }
   }
 }

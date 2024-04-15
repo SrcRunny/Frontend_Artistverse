@@ -36,12 +36,4 @@ export default {
   flex: 1;
 }
 
-/* Adjust styles for each section as needed */
-.section1 {
-  background-color: #f0f0f0;
-}
-
-.section2 {
-  background-color: #e0e0e0;
-}
 </style>
