@@ -7,8 +7,8 @@
         </div>
       </div>
       <div class="overlay" ref="overlay">
-        <h1>Our,</h1>
-        <h2> Feature</h2>
+        <h1>Our</h1>
+        <h2>Feature</h2>
       </div>
     </div>
   </div>
@@ -304,5 +304,20 @@ export default {
 }
 .overlay h1 {
   transform: scale(0);
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 500;
+
+  font-style: normal;
+  letter-spacing: 2px;
+}
+.overlay h2 {
+  transform: scale(0);
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 2px;
+  margin-left: 20px;
+  color: rgb(239, 247, 130);
+
 }
 </style>

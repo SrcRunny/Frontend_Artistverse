@@ -1,7 +1,7 @@
 <template>
   <div class="background">
     <div class="container">
-      <h1 class="title" :class="{ 'animate__animated animate__fadeInDown': section2InView }">
+      <h1 class="title">
         ARTIST
       </h1>
       <div
@@ -198,7 +198,7 @@ export default {
             }
           })
         },
-        { threshold: 0.3 }
+        { threshold: 0.2 }
       )
       observer.observe(this.$el)
     }
