@@ -60,12 +60,12 @@ export default {
       section2InView: false,
       images: [
         {
-          src: 'https://e.snmc.io/i/600/s/90365538208c58d25109e5b52bd44651/11492161/taylor-swift-1989-taylors-version-Cover-Art.jpg',
+          src: 'https://i.pinimg.com/564x/d5/6f/3d/d56f3d970062d683cfb8eef06512ae56.jpg',
           description: 'Taylor Swift',
           showPopup: false
         },
         {
-          src: 'https://i.pinimg.com/564x/d7/03/b8/d703b83b1df5f755d355d623599de3e8.jpg',
+          src: 'https://i.pinimg.com/564x/4b/36/34/4b3634bbbd4ac6986f101a66efdfa505.jpg',
           description: 'Billie Eilish',
           showPopup: false
         },
@@ -75,40 +75,43 @@ export default {
           showPopup: false
         },
         {
-          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto',
-          description: 'Description for image 4',
+          src: 'https://i.pinimg.com/564x/d0/c6/da/d0c6da4df1632679bd5417f12cfbaa3a.jpg',
+          description: 'Justin Bieber',
           showPopup: false
         },
         {
-          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto',
-          description: 'Description for image 5',
+          src: 'https://i.pinimg.com/564x/9a/56/03/9a560395d8cfd33f77f7bfffefe3d76c.jpg',
+          description: 'the weeknd',
           showPopup: false
         },
         {
-          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto',
-          description: 'Description for image 6',
+          src: 'https://i.pinimg.com/564x/c7/90/c7/c790c72932a5ecd0fb332f5a1ca07aca.jpg',
+          description: 'Maroon5',
           showPopup: false
         },
         {
-          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto',
-          description: 'Description for image 1',
+          src: 'https://i.pinimg.com/564x/d0/f7/7e/d0f77e65f531c152153e2ed252b92eac.jpg',
+          description: 'Olivia Rodrigo',
           showPopup: false
         },
         {
-          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto',
-          description: 'Description for image 1',
+          src: 'https://i.pinimg.com/564x/85/49/f4/8549f49ef4897d3632d30c7c9e16ddb4.jpg',
+          description: 'The 1975',
           showPopup: false
         },
         {
-          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto',
-          description: 'Description for image 1',
+          src: 'https://i.pinimg.com/564x/76/d5/45/76d545a1eb6a2e99f49356fae649e137.jpg',
+          description: 'Joji',
           showPopup: false
         },
         {
-          src: 'https://img.buzzfeed.com/buzzfeed-static/complex/images/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover.png?output-format=jpg&output-quality=auto',
-          description: 'Description for image 1',
+          src: 'https://i.pinimg.com/564x/cf/c0/f4/cfc0f4d181ee983afa77d025517a4943.jpg',
+          description: 'Keshi',
           showPopup: false
-        }
+        },
+        
+        
+        
       ],
       maxScrollLeft: 0
     }
@@ -285,7 +288,7 @@ export default {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #202020;
+  background-color: #1b1b1b;
 }
 
 .container {
