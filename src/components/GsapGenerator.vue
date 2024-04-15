@@ -2,7 +2,7 @@
   <div class="body">
     <div class="wrapper" ref="wrapper">
       <div class="items" ref="items">
-        <div class="item" v-for="(image, index) in images" :key="index" ref="item">
+        <div class="item animate__animated animate__fadeInRight animate__delay-1s" v-for="(image, index) in images" :key="index" ref="item">
           <img :src="image.url" :alt="image.alt" />
         </div>
       </div>
