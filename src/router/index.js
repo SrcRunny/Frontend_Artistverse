@@ -3,8 +3,8 @@ import Homepage from '../views/HomepageView.vue'
 import LyricsGenerator from '../views/LyricsGeneratorView.vue'
 import LayoutView from '../views/LayoutView.vue'
 //for test
-import GsapGenerator from '../components/GsapGenerator.vue'
-
+//import GsapGenerator from '../components/GsapGenerator.vue'
+import AssisatanceView from '@/views/AssisatanceView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -24,10 +24,11 @@ const router = createRouter({
       component: LayoutView
     },
     {
-      path: '/test2',
-      name: 'test2',
-      component: GsapGenerator
-    },
+      path: '/ai-assistance',
+      name: 'ai-assistance',
+      component: AssisatanceView
+    }
+
     // {
     //   path: '/artist/0',
     //   name: 'generate-lyrics',
