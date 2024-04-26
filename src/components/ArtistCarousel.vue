@@ -561,11 +561,22 @@ export default {
   }
   .switch-button {
     position: absolute;
-    top: -58%;
-    left: 35%;
+    top: 140%;
+    left: 34%;
   }
 }
 @media only screen and (max-width: 500px) {
+  .title {
+  text-align: center;
+  color: #fff;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-family: 'Tac One', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 2px;
+  animation-duration: 2s; /* don't forget to set a duration! */
+}
   .slider-wrapper .slide-button {
     display: none !important;
   }
@@ -586,12 +597,12 @@ export default {
   }
   .switch-button {
     position: absolute;
-    top: -75%;
+    top: 138%;
     left: 28%;
   }
   .comic-button {
     display: inline-block;
-    padding: 10px 30px;
+    padding: 5px 20px;
     font-size: 15px;
     font-weight: bold;
     text-align: center;

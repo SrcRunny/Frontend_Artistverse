@@ -3,7 +3,6 @@ import Homepage from '../views/HomepageView.vue'
 import LyricsGenerator from '../views/LyricsGeneratorView.vue'
 import LayoutView from '../views/LayoutView.vue'
 //for test
-//import GsapGenerator from '../components/GsapGenerator.vue'
 import TestKeyboardView from '../../TestKeyboardView.vue'
 import AssisatanceView from '@/views/AssisatanceView.vue'
 const router = createRouter({
@@ -33,7 +32,8 @@ const router = createRouter({
       path: '/ai-assistance',
       name: 'ai-assistance',
       component: AssisatanceView
-    }
+    },
+
 
     // {
     //   path: '/artist/0',

@@ -6,6 +6,8 @@
     <div class="section2">
       <ArtistCarousel></ArtistCarousel>
     </div>
+    <TeeKunSection></TeeKunSection>
+
     <!-- <div class="section3">
       <ThaiArtistCarousel></ThaiArtistCarousel>
     </div> -->
@@ -16,8 +18,7 @@
 import ArtistCarousel from '../components/ArtistCarousel.vue'
 import GsapGenerator from '@/components/GsapGenerator.vue'
 // import ThaiArtistCarousel from '@/components/ThaiArtistCarousel.vue'
-// import EmotionSection from '../components/EmotionSection.vue'
-
+import TeeKunSection from '@/components/TeeKunSection.vue'
 export default {
   name: 'LayoutView',
   components: {
@@ -25,6 +26,7 @@ export default {
     GsapGenerator,
     // ThaiArtistCarousel
     // EmotionSection
+    TeeKunSection
   }
 }
 </script>
@@ -39,5 +41,4 @@ export default {
 .section2 {
   flex: 1;
 }
-
 </style>
