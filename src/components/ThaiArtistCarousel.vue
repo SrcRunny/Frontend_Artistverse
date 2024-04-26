@@ -2,9 +2,8 @@
   <div class="background">
     <div class="container">
       <h1 class="title">
-        BY ARTIST STYLE
+        BY THAI ARTIST STYLE
       </h1>
-      
       <div
         class="slider-wrapper"
         :class="{ 'animate__animated animate__fadeInDown animate__delay-1s': section2InView }"
@@ -291,7 +290,7 @@ transition:
   max-width: 1200px;
   width: 100%;
   position: absolute;
-  top: 250%;
+  top: 350%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

@@ -6,20 +6,24 @@
     <div class="section2">
       <ArtistCarousel></ArtistCarousel>
     </div>
+    <!-- <div class="section3">
+      <ThaiArtistCarousel></ThaiArtistCarousel>
+    </div> -->
   </div>
 </template>
 
 <script>
 import ArtistCarousel from '../components/ArtistCarousel.vue'
 import GsapGenerator from '@/components/GsapGenerator.vue'
-
+// import ThaiArtistCarousel from '@/components/ThaiArtistCarousel.vue'
 // import EmotionSection from '../components/EmotionSection.vue'
 
 export default {
   name: 'LayoutView',
   components: {
     ArtistCarousel,
-    GsapGenerator
+    GsapGenerator,
+    // ThaiArtistCarousel
     // EmotionSection
   }
 }
