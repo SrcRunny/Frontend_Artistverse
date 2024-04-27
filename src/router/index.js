@@ -3,7 +3,7 @@ import Homepage from '../views/HomepageView.vue'
 import LyricsGeneratorGenreView from '@/views/LyricsGeneratorGenreView.vue'
 import LayoutView from '../views/LayoutView.vue'
 //for test
-import TestKeyboardView from '../../TestKeyboardView.vue'
+import GsapCard from '../components/GsapCard.vue'
 import AssisatanceView from '@/views/AssisatanceView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,9 +24,9 @@ const router = createRouter({
       component: LayoutView
     },
     {
-      path: '/testkeyboard',
-      name: 'testkeyboard',
-      component: TestKeyboardView
+      path: '/gsapcard',
+      name: 'gsapcard',
+      component: GsapCard
     },
     {
       path: '/ai-assistance',

@@ -171,7 +171,7 @@ export default {
   },
   methods: {
     initGSAP() {
-      gsap.registerPlugin(ScrollTrigger) // Register ScrollTrigger plugin
+      gsap.registerPlugin(ScrollTrigger)
       this.tl = gsap.timeline()
 
       this.tl.to(this.$refs.items.querySelectorAll('.item img'), { scale: 1 }, 0)

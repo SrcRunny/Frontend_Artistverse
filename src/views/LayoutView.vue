@@ -26,7 +26,7 @@ export default {
     GsapGenerator,
     // ThaiArtistCarousel
     // EmotionSection
-    TeeKunSection
+    TeeKunSection,
   }
 }
 </script>
