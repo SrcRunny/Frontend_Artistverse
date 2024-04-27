@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Homepage from '../views/HomepageView.vue'
-import LyricsGenerator from '../views/LyricsGeneratorView.vue'
+import LyricsGeneratorGenreView from '@/views/LyricsGeneratorGenreView.vue'
 import LayoutView from '../views/LayoutView.vue'
 //for test
 import TestKeyboardView from '../../TestKeyboardView.vue'
@@ -14,9 +14,9 @@ const router = createRouter({
       component: Homepage
     },
     {
-      path: '/generate-lyrics',
-      name: 'generate-lyrics',
-      component: LyricsGenerator
+      path: '/generate-lyrics-genre',
+      name: 'generate-lyrics-genre',
+      component: LyricsGeneratorGenreView
     },
     {
       path: '/layoutview',
