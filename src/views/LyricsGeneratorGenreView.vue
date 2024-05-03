@@ -1,53 +1,59 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full space-y-8">
-      <div>
-        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Lyrics Generator</h2>
-      </div>
-      <form @submit.prevent="generateLyrics" class="mt-8 space-y-6">
-        <div class="rounded-md shadow-sm -space-y-px">
-          <div>
-            <label for="prompt" class="sr-only">Prompt</label>
-            <input
-              id="prompt"
-              name="prompt"
-              type="text"
-              required
-              v-model="prompt"
-              class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-              placeholder="Enter your prompt"
-            />
-          </div>
-        </div>
-
+  <div>
+    <h1>Lyrics generator</h1>
+  </div>
+  <div class="container">
+    <div class="vertical">
+      <div class="box1">
         <div>
-          <button
-            type="submit"
-            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-              <path
-                fill-rule="evenodd"
-                d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                clip-rule="evenodd"
-              />
-            </span>
-            Generate Lyrics
-          </button>
-        </div>
-      </form>
-
-      <div v-if="loading" class="mt-8 text-center justify-center items-center">
-        <div class="loader">
-          <div class="bubble"></div>
-          <div class="bubble"></div>
-          <div class="bubble"></div>
+          <h1>GENRE</h1>
         </div>
       </div>
+      <div class="box1">
+        <div>
+          <h1>Mood</h1>
+        </div>
+      </div>
+      <div class="box1">
+        <div>
+          <h1>Artist Style</h1>
+        </div>
+      </div>
+    </div>
 
-      <div v-if="lyrics" class="mt-8 text-center">
-        <h2 class="text-2xl font-bold">Generated Lyrics:</h2>
-        <pre class="mt-4 text-gray-600 whitespace-pre-wrap">{{ lyrics }}</pre>
+    <div class="section2">
+      <div class="box2">
+        <h1>Topic</h1>
+        <input v-model="prompt" type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+        <div class="dropdown">
+          <select v-model="genre">
+            <option value="Pop">Pop</option>
+            <option value="Rock">Rock</option>
+            <option value="Indie">Indie</option>
+            <option value="Jazz">Jazz</option>
+          </select>
+          <select v-model="language">
+            <option value="Thai">Thai</option>
+            <option value="English">English</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Japanese">Japanese</option>
+          </select>
+        </div>
+        <div>
+          <button @click="generateLyrics">Generate</button>
+        </div>
+      </div>
+    </div>
+    <div class="section3">
+      <div class="box3">
+        <div v-if="loading" class="loader">
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+        </div>
+        <div v-else>
+          <pre v-if="lyrics">{{ lyrics }}</pre>
+        </div>
       </div>
     </div>
   </div>
@@ -58,6 +64,8 @@ export default {
   data() {
     return {
       prompt: '',
+      genre: 'Pop',
+      language: 'Thai',
       lyrics: '',
       loading: false
     }
@@ -66,12 +74,12 @@ export default {
     async generateLyrics() {
       try {
         this.loading = true
-        const response = await fetch('http://127.0.0.1:5000/generate-lyrics', {
+        const response = await fetch('http://127.0.0.1:5000/generate-lyrics-genre', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ prompt: this.prompt })
+          body: JSON.stringify({ prompt: this.prompt, genre: this.genre, language: this.language })
         })
 
         const data = await response.json()
@@ -79,7 +87,7 @@ export default {
       } catch (error) {
         console.error('Error:', error)
       } finally {
-        this.loading = false // reset loadddddd
+        this.loading = false
       }
     }
   }
@@ -87,6 +95,41 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.box1 {
+  width: 200px;
+  height: 160px;
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  text-align: center;
+}
+
+.box2 {
+  width: 500px;
+  height: 480px;
+  border: 1px solid #000000;
+  padding: 30px;
+}
+
+.box3 {
+  width: 500px;
+  height: 480px;
+  border: 1px solid #000000;
+  padding: 30px;
+}
+
+.box1 h1 {
+  color: rgb(0, 0, 0);
+}
+
 .loader {
   display: flex;
   justify-content: center;
