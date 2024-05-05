@@ -1,7 +1,7 @@
 <template>
   <div class="background">
     <div class="container">
-      <h1 class="title">BY ARTIST STYLE</h1>
+      <h1 class="title">INCLUDE ARTIST</h1>
       <div class="slider-wrapper" ref="sliderWrapper">
         <button @click="switchNationality" class="switch-button comic-button">
           {{ switchButtonLabel }}

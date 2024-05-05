@@ -5,7 +5,6 @@ import LyricsGeneratorMoodView from '@/views/LyricsGeneratorMood.vue'
 import LyricsGeneratorArtistView from '@/views/LyricsGeneratorArtistView.vue'
 import LayoutView from '../views/LayoutView.vue'
 //for test
-import GsapCard from '../components/GsapCard.vue'
 import AssisatanceView from '@/views/AssisatanceView.vue'
 
 const router = createRouter({
@@ -36,11 +35,7 @@ const router = createRouter({
       name: 'layoutview',
       component: LayoutView
     },
-    {
-      path: '/gsapcard',
-      name: 'gsapcard',
-      component: GsapCard
-    },
+
     {
       path: '/ai-assistance',
       name: 'ai-assistance',
