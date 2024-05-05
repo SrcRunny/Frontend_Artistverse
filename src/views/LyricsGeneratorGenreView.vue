@@ -33,7 +33,7 @@
     </div>
     <div class="container1 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 mt-5 md:mt-4">
       <div
-        class="box1 animate__animated animate__fadeInUp animate__delay-2s"
+        class="box1 animate__animated animate__fadeIn animate__delay-2s"
         style="animation-duration: 2s"
       >
         <h1 class="header text-4xl mb-3">Lyrics Generator</h1>
@@ -77,7 +77,7 @@
         </button>
       </div>
       <div
-        class="box2 mb-5 animate__animated animate__fadeInUp animate__delay-2s"
+        class="box2 mb-5 animate__animated animate__fadeIn animate__delay-2s"
         style="animation-duration: 2s"
       >
         <h1 v-if="text">Result</h1>

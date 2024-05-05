@@ -12,9 +12,24 @@
         </div>
       </div>
       <div class="overlay" ref="overlay">
-        <h1>Our</h1>
-        <h2>Feature</h2>
-
+        <h1>Lyrics</h1>
+        <h2 style="margin-right: 30px">Generate</h2>
+        <router-link to="/generate-lyrics-genre">
+        <button class="animated-button">
+          <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+            ></path>
+          </svg>
+          <span class="text">Let's Generate!</span>
+          <span class="circle"></span>
+          <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+            ></path>
+          </svg>
+        </button>
+      </router-link>
       </div>
     </div>
   </div>
@@ -247,6 +262,7 @@ export default {
   background-color: rgba(0, 0, 0, 0.6);
   width: 100vw;
   height: 0vh;
+  flex-wrap: wrap;
   /* height: 100vh; */
   display: flex;
   align-items: center;
@@ -264,6 +280,7 @@ export default {
 
   font-style: normal;
   letter-spacing: 2px;
+  z-index: auto;
 }
 .overlay h2 {
   transform: scale(0);
@@ -273,5 +290,100 @@ export default {
   letter-spacing: 2px;
   margin-left: 20px;
   color: rgb(239, 247, 130);
+}
+.animated-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 36px;
+  border: 4px solid;
+  border-color: transparent;
+  font-size: 16px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  box-shadow: 0 0 0 2px rgb(255, 255, 255);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  margin-top: 20px;
+}
+
+.animated-button svg {
+  position: absolute;
+  width: 24px;
+  fill: rgb(255, 255, 255);
+  z-index: 9;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .arr-1 {
+  right: 16px;
+}
+
+.animated-button .arr-2 {
+  left: -25%;
+}
+
+.animated-button .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .text {
+  position: relative;
+  z-index: 1;
+  transform: translateX(-12px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button:hover {
+  box-shadow: 0 0 0 12px transparent;
+  color: #212121;
+  border-radius: 12px;
+}
+
+.animated-button:hover .arr-1 {
+  right: -25%;
+}
+
+.animated-button:hover .arr-2 {
+  left: 16px;
+}
+
+.animated-button:hover .text {
+  transform: translateX(12px);
+}
+
+.animated-button:hover svg {
+  fill: #212121;
+}
+
+.animated-button:active {
+  scale: 0.95;
+  box-shadow: 0 0 0 4px rgb(255, 255, 255);
+}
+
+.animated-button:hover .circle {
+  width: 220px;
+  height: 220px;
+  opacity: 1;
+}
+
+@media (max-width: 500px) {
+  h1,h2{
+    position: relative;
+    left: 20px;
+  }
 }
 </style>
