@@ -5,7 +5,7 @@
         class="text-4xl md:text-5xl mt-8 animate__animated animate__fadeInDown animate__delay-1s"
         style="animation-duration: 2s"
       >
-        Lyrics Generator by "Genre"
+        Lyrics Generator by "Artist"
       </h1>
       <div
         class="nav mt-5 animate__animated animate__fadeInDown animate__delay-1s"
@@ -49,9 +49,9 @@
         </div>
 
         <div class="dropdown mt-10">
-          <h2 class="text-xl">Genre:</h2>
-          <select v-model="genre" class="ml-5 mr-5">
-            <option value="Pop">Pop</option>
+          <h2 class="text-xl">Artist:</h2>
+          <select v-model="artist" class="ml-5 mr-5">
+            <option value="Taylor swift">Taylor swift</option>
             <option value="Rock">Rock</option>
             <option value="Indie">Indie</option>
             <option value="Jazz">Jazz</option>
@@ -98,7 +98,7 @@ export default {
   data() {
     return {
       prompt: '',
-      genre: '',
+      artist: '',
       language: '',
       lyrics: '',
       loading: false,
@@ -109,12 +109,16 @@ export default {
     async generateLyrics() {
       try {
         this.loading = true
-        const response = await fetch('http://127.0.0.1:5000/generate-lyrics-genre', {
+        const response = await fetch('http://127.0.0.1:5000/generate-lyrics-artist', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ prompt: this.prompt, genre: this.genre, language: this.language })
+          body: JSON.stringify({
+            prompt: this.prompt,
+            artist: this.artist,
+            language: this.language
+          })
         })
 
         const data = await response.json()

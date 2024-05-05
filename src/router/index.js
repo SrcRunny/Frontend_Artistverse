@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Homepage from '../views/HomepageView.vue'
-import LyricsGeneratorGenreView from '@/views/LyricsGeneratorGenreView.vue'
+import LyricsGeneratorGenreView from '../views/LyricsGeneratorGenreView.vue'
+import LyricsGeneratorMoodView from '@/views/LyricsGeneratorMood.vue'
+import LyricsGeneratorArtistView from '@/views/LyricsGeneratorArtistView.vue'
 import LayoutView from '../views/LayoutView.vue'
 //for test
 import GsapCard from '../components/GsapCard.vue'
@@ -19,6 +21,16 @@ const router = createRouter({
       component: LyricsGeneratorGenreView
     },
     {
+      path: '/generate-lyrics-mood',
+      name: 'generate-lyrics-mood',
+      component: LyricsGeneratorMoodView
+    },
+    {
+      path: '/generate-lyrics-artist',
+      name: 'generate-lyrics-artist',
+      component: LyricsGeneratorArtistView
+    },
+    {
       path: '/layoutview',
       name: 'layoutview',
       component: LayoutView
@@ -32,8 +44,7 @@ const router = createRouter({
       path: '/ai-assistance',
       name: 'ai-assistance',
       component: AssisatanceView
-    },
-
+    }
 
     // {
     //   path: '/artist/0',

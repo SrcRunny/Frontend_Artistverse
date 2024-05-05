@@ -5,7 +5,7 @@
         class="text-4xl md:text-5xl mt-8 animate__animated animate__fadeInDown animate__delay-1s"
         style="animation-duration: 2s"
       >
-        Lyrics Generator by "Genre"
+        Lyrics Generator by "Mood"
       </h1>
       <div
         class="nav mt-5 animate__animated animate__fadeInDown animate__delay-1s"
@@ -49,11 +49,11 @@
         </div>
 
         <div class="dropdown mt-10">
-          <h2 class="text-xl">Genre:</h2>
-          <select v-model="genre" class="ml-5 mr-5">
-            <option value="Pop">Pop</option>
-            <option value="Rock">Rock</option>
-            <option value="Indie">Indie</option>
+          <h2 class="text-xl">Mood:</h2>
+          <select v-model="mood" class="ml-5 mr-5">
+            <option value="Happy">Happy</option>
+            <option value="Sad">Sad</option>
+            <option value="Fearful">Fearful</option>
             <option value="Jazz">Jazz</option>
           </select>
           <h2 class="text-xl">Language:</h2>
@@ -98,7 +98,7 @@ export default {
   data() {
     return {
       prompt: '',
-      genre: '',
+      mood: '',
       language: '',
       lyrics: '',
       loading: false,
@@ -109,12 +109,12 @@ export default {
     async generateLyrics() {
       try {
         this.loading = true
-        const response = await fetch('http://127.0.0.1:5000/generate-lyrics-genre', {
+        const response = await fetch('http://127.0.0.1:5000/generate-lyrics-mood', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ prompt: this.prompt, genre: this.genre, language: this.language })
+          body: JSON.stringify({ prompt: this.prompt, mood: this.mood, language: this.language })
         })
 
         const data = await response.json()
