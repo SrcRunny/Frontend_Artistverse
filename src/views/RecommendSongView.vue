@@ -1,42 +1,66 @@
 <template>
   <div class="background">
     <h1 class="title">Emotion Music Recommender</h1>
-    <div class="emotion-detector">
-      <h2 class="subtitle">Emotion Detector</h2>
-
-      <div class="video-container">
-        <img class="video-feed" :src="videoFeedURL" :key="videoFeedKey" />
+    <hr >
+    <div class="emotion-detector-container">
+      <div class="emotion-detector">
+        <h2 class="subtitle">Emotion Detector</h2>
+        <div class="video-container">
+          <img class="video-feed" :src="videoFeedURL" :key="videoFeedKey" />
+        </div>
+        <div class="container1">
+          <button @click="startCountdown" :disabled="countingDown" class="button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              viewBox="0 0 24 24"
+              height="24"
+              fill="none"
+              class="svg-icon"
+            >
+              <g
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke="#fff"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              >
+                <path
+                  d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z"
+                ></path>
+                <path
+                  d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"
+                ></path>
+              </g>
+            </svg>
+          </button>
+          <h3 v-if="countDown > 0" class="countdown">{{ countDown }}</h3>
+          <button @click="reset" class="reset-button btn btn-neutral">Reset</button>
+          <h3 v-if="emotion" class="detected-emotion">Detected Emotion: {{ emotion }}</h3>
+        </div>
       </div>
-      <h3 v-if="countDown > 0" class="countdown">{{ countDown }}</h3>
-      <button class="camera-btn">
-        <i class="fas fa-camera"></i>
-      </button>
-      <button @click="startCountdown" :disabled="countingDown" class="capture-button">
-        Capture Emotion
-      </button>
-      <button @click="reset" class="reset-button">Reset</button>
-      <h3 v-if="emotion" class="detected-emotion">Detected Emotion: {{ emotion }}</h3>
     </div>
-
-    <div class="song-recommendations">
-      <h2 class="subtitle">Song Recommendations</h2>
-      <div class="result-area">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Album</th>
-              <th>Artist</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, index) in data" :key="index">
-              <td>{{ item.Name }}</td>
-              <td>{{ item.Album }}</td>
-              <td>{{ item.Artist }}</td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="song-recommendations-container">
+      <div class="song-recommendations">
+        <h2 class="subtitle">Song Recommendations</h2>
+        <div class="result-area">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Album</th>
+                <th>Artist</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(item, index) in data" :key="index">
+                <td>{{ item.Name }}</td>
+                <td>{{ item.Album }}</td>
+                <td>{{ item.Artist }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
@@ -107,10 +131,6 @@ export default {
   text-align: center;
 }
 
-.container {
-  text-align: center;
-}
-
 .title {
   z-index: 2;
   font-family: 'Avalors Personal Use';
@@ -118,7 +138,7 @@ export default {
   letter-spacing: 5px;
   color: #ffffff;
   text-shadow: 0 0 4px white;
-  margin-top: 40px;
+  margin-top: 60px;
 }
 
 .subtitle {
@@ -128,12 +148,14 @@ export default {
   letter-spacing: 5px;
   color: #ffffff;
   text-shadow: 0 0 4px white;
-  margin: 40px;
+  margin: 20px;
+}
+
+.emotion-detector-container {
+  @apply md:col-span-6;
 }
 
 .emotion-detector {
-  width: 50%;
-  float: left;
   height: 100%;
   margin: auto;
   padding-bottom: 20px;
@@ -142,59 +164,106 @@ export default {
 
 .video-container {
   text-align: center;
-  width: 100%;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
 }
 
 .video-feed {
   display: inline-block;
-  width: 65%;
-  border: solid rgb(154, 153, 153) 2px;
+  width: 100%; /* Modified */
+  max-width: 500px; /* Added */
+  border: solid rgb(255, 255, 255) 10px;
   border-radius: 20px;
-  box-shadow: 0 0 10px rgba(77, 77, 77, 0.3);
+  box-shadow: 0 0 40px rgba(231, 231, 231, 0.3);
 }
 
-.camera-btn {
-  width: 200px;
-  padding: 25px 30px 25px 30px;
-  font-family: sans-serif;
-  font-size: 400%;
-  border-radius: 25px;
+.container1 {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  justify-content: center;
+  align-items: center;
+  padding-left: 28px;
+  height: 60px;
+  width: 80px;
   border: none;
-  background-color: #9b59b6;
-  color: white;
-}
-
-.camera-btn:hover {
+  background: #ff2849;
+  border-radius: 20px;
   cursor: pointer;
-  background-color: #8e44ad;
+  position: relative;
+  bottom: 35px;
 }
 
-.camera-btn:active {
-  background: #8e44ad;
+.button:hover {
+  background: #e52441;
+}
+
+.button:hover .svg-icon {
+  animation: flickering 2s linear infinite;
+}
+
+@keyframes flickering {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  52% {
+    opacity: 1;
+  }
+  54% {
+    opacity: 0;
+  }
+  56% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 0;
+  }
+  94% {
+    opacity: 1;
+  }
+  96% {
+    opacity: 0;
+  }
+  98% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .countdown {
   color: #ff3300;
-}
-
-.capture-button {
-  margin-top: 10px;
+  font-size: 80px;
+  position: relative;
+  bottom: 420px;
 }
 
 .reset-button {
-  margin-top: 10px;
+  position: relative;
+  bottom: 20px;
 }
 
 .detected-emotion {
   color: #ff3300;
 }
 
+.song-recommendations-container {
+  @apply md:col-span-6;
+}
+
 .song-recommendations {
-  width: 50%;
-  float: left;
   height: 100%;
   margin: auto;
   text-align: center;
@@ -212,5 +281,16 @@ export default {
 .table {
   margin: auto;
   width: 100%;
+}
+
+
+@media (max-width: 500px) {
+  .countdown {
+  color: #ff3300;
+  font-size: 70px;
+  position: relative;
+  bottom: 340px;
+}
+
 }
 </style>
