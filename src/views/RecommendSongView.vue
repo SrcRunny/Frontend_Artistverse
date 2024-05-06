@@ -1,46 +1,27 @@
 <template>
-  <div>
-    <h1 align="center" style="color: #ff3300; margin: 40px">Emotion Music Recommender</h1>
+  <div class="background">
+    <h1 class="title">Emotion Music Recommender</h1>
+    <div class="emotion-detector">
+      <h2 class="subtitle">Emotion Detector</h2>
 
-    <div
-      style="
-        width: 50%;
-        float: left;
-        height: 100%;
-        margin: auto;
-        padding-bottom: 25px;
-        text-align: center;
-      "
-    >
-      <h2 align="center" style="color: #ff3300">Emotion Detector</h2>
-
-      <div style="margin: 10px; text-align: center; width: 49%">
-        <img class="outer-shadow center img-fluid" :src="videoFeedURL" :key="videoFeedKey" />
+      <div class="video-container">
+        <img class="video-feed" :src="videoFeedURL" :key="videoFeedKey" />
       </div>
-      <h3 v-if="countDown > 0" style="color: #ff3300;">{{ countDown }}</h3>
-      <button @click="startCountdown" style="margin-top: 10px;" :disabled="countingDown">Capture Emotion</button>
-      <button @click="reset" style="margin-top: 10px;">Reset</button>
-      <h3 v-if="emotion" style="color: #ff3300;">Detected Emotion: {{ emotion }}</h3>
+      <h3 v-if="countDown > 0" class="countdown">{{ countDown }}</h3>
+      <button class="camera-btn">
+        <i class="fas fa-camera"></i>
+      </button>
+      <button @click="startCountdown" :disabled="countingDown" class="capture-button">
+        Capture Emotion
+      </button>
+      <button @click="reset" class="reset-button">Reset</button>
+      <h3 v-if="emotion" class="detected-emotion">Detected Emotion: {{ emotion }}</h3>
     </div>
 
-    <div style="width: 50%; float: left; height: 100%; margin: auto; text-align: center">
-      <h2 align="center" style="color: #ff3300">Song Recommendations</h2>
-      <div
-        class="outer-shadow"
-        id="ResultArea"
-        style="
-          padding: 15px;
-          width: 100%;
-          height: 100%;
-          margin: auto;
-          text-align: center;
-          margin-bottom: 15px;
-        "
-      >
-        <table
-          class="table table-striped table-light table-bordered table-hover table-sm table-responsive"
-          id="DynamicTable"
-        >
+    <div class="song-recommendations">
+      <h2 class="subtitle">Song Recommendations</h2>
+      <div class="result-area">
+        <table class="table">
           <thead>
             <tr>
               <th>Name</th>
@@ -75,17 +56,17 @@ export default {
   },
   methods: {
     startCountdown() {
-      this.countDown = 3;
-      this.countingDown = true;
+      this.countDown = 5
+      this.countingDown = true
       const countdownInterval = setInterval(() => {
         if (this.countDown > 0) {
-          this.countDown--;
+          this.countDown--
         } else {
-          clearInterval(countdownInterval);
-          this.captureEmotion();
-          this.countingDown = false;
+          clearInterval(countdownInterval)
+          this.captureEmotion()
+          this.countingDown = false
         }
-      }, 1000);
+      }, 1000)
     },
     captureEmotion() {
       fetch('http://127.0.0.1:5000/video_feed')
@@ -108,20 +89,128 @@ export default {
         })
     },
     reset() {
-      this.data = [];
-      this.emotion = null;
-      this.countDown = 0;
-      this.videoFeedKey++;
+      this.data = []
+      this.emotion = null
+      this.countDown = 0
+      this.videoFeedKey++
     }
   }
 }
 </script>
 
 <style scoped>
-img {
-  padding: 20px;
-  display: inline-block;
+.background {
+  min-height: 100vh;
+  background-color: #1b1b1b;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+}
+
+.container {
+  text-align: center;
+}
+
+.title {
+  z-index: 2;
+  font-family: 'Avalors Personal Use';
+  font-size: 40px;
+  letter-spacing: 5px;
+  color: #ffffff;
+  text-shadow: 0 0 4px white;
+  margin-top: 40px;
+}
+
+.subtitle {
+  z-index: 2;
+  font-family: 'Avalors Personal Use';
+  font-size: 20px;
+  letter-spacing: 5px;
+  color: #ffffff;
+  text-shadow: 0 0 4px white;
+  margin: 40px;
+}
+
+.emotion-detector {
+  width: 50%;
+  float: left;
+  height: 100%;
   margin: auto;
-  width: 85%;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.video-container {
+  text-align: center;
+  width: 100%;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+}
+
+.video-feed {
+  display: inline-block;
+  width: 65%;
+  border: solid rgb(154, 153, 153) 2px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(77, 77, 77, 0.3);
+}
+
+.camera-btn {
+  width: 200px;
+  padding: 25px 30px 25px 30px;
+  font-family: sans-serif;
+  font-size: 400%;
+  border-radius: 25px;
+  border: none;
+  background-color: #9b59b6;
+  color: white;
+}
+
+.camera-btn:hover {
+  cursor: pointer;
+  background-color: #8e44ad;
+}
+
+.camera-btn:active {
+  background: #8e44ad;
+}
+
+.countdown {
+  color: #ff3300;
+}
+
+.capture-button {
+  margin-top: 10px;
+}
+
+.reset-button {
+  margin-top: 10px;
+}
+
+.detected-emotion {
+  color: #ff3300;
+}
+
+.song-recommendations {
+  width: 50%;
+  float: left;
+  height: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+.result-area {
+  padding: 15px;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.table {
+  margin: auto;
+  width: 100%;
 }
 </style>
