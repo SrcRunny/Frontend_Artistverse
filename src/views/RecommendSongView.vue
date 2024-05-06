@@ -1,7 +1,6 @@
 <template>
   <div class="background">
     <h1 class="title">Emotion Music Recommender</h1>
-    <hr >
     <div class="emotion-detector-container">
       <div class="emotion-detector">
         <h2 class="subtitle">Emotion Detector</h2>
@@ -43,23 +42,21 @@
     <div class="song-recommendations-container">
       <div class="song-recommendations">
         <h2 class="subtitle">Song Recommendations</h2>
-        <div class="result-area">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Album</th>
-                <th>Artist</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(item, index) in data" :key="index">
-                <td>{{ item.Name }}</td>
-                <td>{{ item.Album }}</td>
-                <td>{{ item.Artist }}</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="result-area grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div v-for="(item, index) in data" :key="index" class="card w-90 bg-base-100 shadow-xl">
+            <figure class="px-10 pt-10">
+              <img :src="item.Image" :alt="item.Name" class="rounded-xl music-pic" />
+            </figure>
+            <div class="card-body items-center text-center">
+              <h2 class="card-title">{{ item.Name }}</h2>
+              <p>{{ item.Album }} by {{ item.Artist }}</p>
+              <div class="card-actions">
+                <a :href="item.Spotify_link" target="_blank" rel="noopener noreferrer">
+                  <button class="btn btn-success">Listen on Spotify</button>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -261,12 +258,23 @@ export default {
 
 .song-recommendations-container {
   @apply md:col-span-6;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.song-recommendations-container {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .song-recommendations {
   height: 100%;
   margin: auto;
   text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .result-area {
@@ -291,6 +299,9 @@ export default {
   position: relative;
   bottom: 340px;
 }
+
+
+
 
 }
 </style>
