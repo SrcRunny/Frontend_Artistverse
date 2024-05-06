@@ -15,10 +15,12 @@
       <h2 align="center" style="color: #ff3300">Emotion Detector</h2>
 
       <div style="margin: 10px; text-align: center; width: 49%">
-        <img class="outer-shadow center img-fluid" :src="videoFeedURL" />
+        <img class="outer-shadow center img-fluid" :src="videoFeedURL" :key="videoFeedKey" />
       </div>
-      <button @click="startCountdown" style="margin-top: 10px;">Capture Emotion</button>
-      <div v-if="showCountdown" style="font-size: 24px; color: red; margin-top: 10px;">{{ countdownNumber }}</div>
+      <h3 v-if="countDown > 0" style="color: #ff3300;">{{ countDown }}</h3>
+      <button @click="startCountdown" style="margin-top: 10px;" :disabled="countingDown">Capture Emotion</button>
+      <button @click="reset" style="margin-top: 10px;">Reset</button>
+      <h3 v-if="emotion" style="color: #ff3300;">Detected Emotion: {{ emotion }}</h3>
     </div>
 
     <div style="width: 50%; float: left; height: 100%; margin: auto; text-align: center">
@@ -64,23 +66,24 @@ export default {
   data() {
     return {
       videoFeedURL: 'http://127.0.0.1:5000/video_feed',
+      videoFeedKey: 0,
       data: [],
-      showCountdown: false,
-      countdownNumber: 0
+      countingDown: false,
+      emotion: null,
+      countDown: 0
     }
   },
   methods: {
     startCountdown() {
-      this.showCountdown = true;
-      let count = 3;
-      this.countdownNumber = count;
+      this.countDown = 3;
+      this.countingDown = true;
       const countdownInterval = setInterval(() => {
-        if (count > 0) {
-          count--;
-          this.countdownNumber = count;
+        if (this.countDown > 0) {
+          this.countDown--;
         } else {
           clearInterval(countdownInterval);
           this.captureEmotion();
+          this.countingDown = false;
         }
       }, 1000);
     },
@@ -103,6 +106,12 @@ export default {
         .catch((error) => {
           console.error('Error:', error)
         })
+    },
+    reset() {
+      this.data = [];
+      this.emotion = null;
+      this.countDown = 0;
+      this.videoFeedKey++;
     }
   }
 }
