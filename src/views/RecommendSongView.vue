@@ -43,7 +43,7 @@
       <div class="song-recommendations">
         <h2 class="subtitle">Song Recommendations</h2>
         <div class="result-area grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div v-for="(item, index) in data" :key="index" class="card w-90 bg-base-100 shadow-xl">
+          <div v-for="(item, index) in data" :key="index" style="animation-duration: 2s" class="card w-90 bg-base-100 shadow-xl animate__animated animate__fadeInUp animate__delay-2s">
             <figure class="px-10 pt-10">
               <img :src="item.Image" :alt="item.Name" class="rounded-xl music-pic" />
             </figure>
