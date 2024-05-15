@@ -96,9 +96,6 @@ export default {
 </script>
 
 <template>
-
-
-  
   <div class="slider">
     <div class="list">
       <div
