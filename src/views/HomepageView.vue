@@ -1,5 +1,17 @@
 <template>
   <div>
-    <h1>this is homepafe</h1>
+    <HomepageCarousel></HomepageCarousel>
   </div>
 </template>
+
+<script>
+import HomepageCarousel from '@/components/HomepageCarousel.vue';
+export default {
+  name: 'HomepageView',
+  components: {
+    HomepageCarousel,
+  },
+};
+</script>
+
+
