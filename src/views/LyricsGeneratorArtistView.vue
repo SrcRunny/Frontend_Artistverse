@@ -87,6 +87,8 @@
           <pre v-if="lyrics" class="lyrics-container animate__animated animate__fadeIn">{{
             lyrics
           }}</pre>
+          <button v-if="lyrics" class="btn-save" @click="saveLyrics">Save Lyrics</button>
+
         </div>
       </div>
     </div>
@@ -129,11 +131,19 @@ export default {
         this.loading = false
         this.text = false
       }
+    },
+    saveLyrics() {
+      const blob = new Blob([this.lyrics], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Lyrics.txt';
+      a.click();
+      URL.revokeObjectURL(url);
     }
   }
 }
 </script>
-
 <style scoped>
 .lyrics-container {
   max-height: 350px;
