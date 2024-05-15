@@ -1,9 +1,6 @@
 <script>
-import videoSrc from '../video/2.mp4'
-import videoSrc2 from '../video/1.mp4'
-import videoSrc3 from '../video/3.mp4'
-import videoSrc5 from '../video/5.mp4'
-import videoSrc4 from '../video/4.mp4'
+import { ref, getDownloadURL } from 'firebase/storage';
+import { storage } from '../firebaseConfig'; 
 import 'animate.css'
 
 export default {
@@ -13,7 +10,7 @@ export default {
       items: [
         {
           head: 'WE ARE',
-          videoSrc: videoSrc,
+          videoSrc: null,
           title: 'ARTISTVERSE',
           description:
             'Music is the art form that combines rhythm and sound to form a functional melodic line. Music itself transcends time, space, and cultures.',
@@ -22,7 +19,7 @@ export default {
         },
         {
           head: 'Together,',
-          videoSrc: videoSrc2,
+          videoSrc: null,
           title: 'Lets Rock!!!',
           description: 'Music is the art form that combines rhythm and sound to form a functional melodic line. Music itself transcends time, space, and cultures.',
           image:
@@ -30,21 +27,21 @@ export default {
         },
         {
           head: 'Feeling',
-          videoSrc: videoSrc3,
+          videoSrc: null,
           title: 'Emotion',
           description: 'Music is the art form that combines rhythm and sound to form a functional melodic line. Music itself transcends time, space, and cultures.',
           image: 'https://i1.sndcdn.com/artworks-000542021190-mf72zi-t500x500.jpg'
         },
         {
           head: 'Feature,',
-          videoSrc: videoSrc4,
+          videoSrc: null,
           title: 'Generator',
           description: 'Music is the art form that combines rhythm and sound to form a functional melodic line. Music itself transcends time, space, and cultures.',
           image: 'https://i.pinimg.com/564x/bb/d9/51/bbd9514ebd85ab44b11e022bf7d1a321.jpg'
         },
         {
           head: 'let',
-          videoSrc: videoSrc5,
+          videoSrc: null,
           title: 'Contact us',
           description: 'Music is the art form that combines rhythm and sound to form a functional melodic line. Music itself transcends time, space, and cultures.',
           image: 'https://i.pinimg.com/564x/f1/ef/2d/f1ef2ddd07e4fab9c75f262ae5526245.jpg'
@@ -53,10 +50,25 @@ export default {
       intervalId: null
     }
   },
-  mounted() {
-    this.startAutoRun()
+  async mounted() {
+    await this.loadVideoUrls();
+    this.startAutoRun();
   },
   methods: {
+    async loadVideoUrls() {
+      const videoRefs = [
+        ref(storage, '2.mp4'),
+        ref(storage, '1.mp4'),
+        ref(storage, '3.mp4'),
+        ref(storage, '4.mp4'),
+        ref(storage, '5.mp4'),
+      ];
+
+      for (let i = 0; i < videoRefs.length; i++) {
+        const url = await getDownloadURL(videoRefs[i]);
+        this.items[i].videoSrc = url;
+      }
+    },
     setActive(index) {
       this.activeIndex = index
     },
