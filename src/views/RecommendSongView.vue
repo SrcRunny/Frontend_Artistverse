@@ -35,7 +35,7 @@
           </button>
           <h3 v-if="countDown > 0" class="countdown">{{ countDown }}</h3>
           <button @click="reset" class="reset-button btn btn-neutral">Reset</button>
-          <h3 v-if="emotion" class="detected-emotion">Detected Emotion: {{ emotion }}</h3>
+          <h3 v-if="emotion" class="detected-emotion">Your emotion is: "{{ emotion }}"</h3>
         </div>
       </div>
     </div>
@@ -90,25 +90,16 @@ export default {
       }, 1000)
     },
     captureEmotion() {
-      fetch('http://127.0.0.1:5000/video_feed')
-        .then(() => {
-          console.log('Emotion captured successfully!')
-          this.updateTable()
-        })
-        .catch((error) => {
-          console.error('Error capturing emotion:', error)
-        })
-    },
-    updateTable() {
-      fetch('http://127.0.0.1:5000/t')
-        .then((response) => response.json())
-        .then((data) => {
-          this.data = data
-        })
-        .catch((error) => {
-          console.error('Error:', error)
-        })
-    },
+  fetch('http://127.0.0.1:5000/t')
+    .then((response) => response.json())
+    .then((data) => {
+      this.data = JSON.parse(data.songs);
+      this.emotion = data.emotion;
+    })
+    .catch((error) => {
+      console.error('Error capturing emotion:', error);
+    });
+},
     reset() {
       this.data = []
       this.emotion = null
@@ -253,7 +244,8 @@ export default {
 }
 
 .detected-emotion {
-  color: #ff3300;
+  color: #eb4f28;
+  font-size: 20px;
 }
 
 .song-recommendations-container {
@@ -299,9 +291,5 @@ export default {
   position: relative;
   bottom: 340px;
 }
-
-
-
-
 }
 </style>
