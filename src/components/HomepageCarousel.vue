@@ -13,7 +13,7 @@ export default {
           videoSrc: null,
           title: 'ARTISTVERSE',
           description:
-            'Music is the art form that combines rhythm and sound to form a functional melodic line. Music itself transcends time, space, and cultures.',
+            'Artistverse streamlines songwriting with customizable lyrics, genre and mood selection, and chord progression recommendations. Mimic your favorite artists, get emotional song suggestions through facial recognition, and enjoy an engaging, efficient music creation experience. Embrace the future of music with Artistverse.',
           image:
             'https://png.pngtree.com/thumb_back/fw800/background/20220709/pngtree-abstract-lowpoly-data-visualization-on-dark-background-ai-contemporary-cell-photo-image_37843356.jpg'
         },
@@ -21,7 +21,7 @@ export default {
           head: 'Together,',
           videoSrc: null,
           title: 'Lets Rock!!!',
-          description: 'Music is the art form that combines rhythm and sound to form a functional melodic line. Music itself transcends time, space, and cultures.',
+          description: 'We can created the rock lyrics for you. but not just the rock genre but also Create personalized lyrics from various moods and genres, compose in multiple languages, and mimic your favorite artists.Just Input prompts, and our system crafts unique lyrics tailored to your preferences.',
           image:
             'https://lafransatravellers.com/wp-content/uploads/2019/03/actuacion-actuacion-en-vivo-artistas-1763075.jpg'
         },
@@ -29,21 +29,21 @@ export default {
           head: 'Feeling',
           videoSrc: null,
           title: 'Emotion',
-          description: 'Music is the art form that combines rhythm and sound to form a functional melodic line. Music itself transcends time, space, and cultures.',
+          description: 'Experience music that resonates with your emotions. Our mood detection camera analyzes your facial expressions to determine your current mood and recommends curated Spotify playlists to match. Enjoy a personalized listening experience, find inspiration for your own music',
           image: 'https://i1.sndcdn.com/artworks-000542021190-mf72zi-t500x500.jpg'
         },
         {
-          head: 'Feature,',
+          head: 'Chord',
           videoSrc: null,
-          title: 'Generator',
-          description: 'Music is the art form that combines rhythm and sound to form a functional melodic line. Music itself transcends time, space, and cultures.',
+          title: 'Progression',
+          description: 'Unleash your inner composer with our Chord Progression feature. Choose your key, select a progression, and witness the system craft harmonies like never before. Visualize chords, hear their sound, and turn your musical dreams into reality',
           image: 'https://i.pinimg.com/564x/bb/d9/51/bbd9514ebd85ab44b11e022bf7d1a321.jpg'
         },
         {
-          head: 'let',
+          head: 'Ai',
           videoSrc: null,
-          title: 'Contact us',
-          description: 'Music is the art form that combines rhythm and sound to form a functional melodic line. Music itself transcends time, space, and cultures.',
+          title: 'Analysis',
+          description: 'Dive deeper into your lyrics with our AI Lyrics Analysis feature. Simply input your lyrics, and watch as the system unveils a treasure trove of musical insights. From chord suggestions to tempo recommendations, and even key identification, let your creativity soar with precision-guided assistance.',
           image: 'https://i.pinimg.com/564x/f1/ef/2d/f1ef2ddd07e4fab9c75f262ae5526245.jpg'
         }
       ],
@@ -109,12 +109,7 @@ export default {
           <p>{{ item.head }}</p>
           <h2>{{ item.title }}</h2>
           <p>{{ item.description }}</p>
-          <a class="fancy" v-if="index === 4" href="#">
-            <span class="top-key"></span>
-            <span class="text">Let's go</span>
-            <span class="bottom-key-1"></span>
-            <span class="bottom-key-2"></span>
-          </a>
+          
         </div>
       </div>
     </div>
@@ -418,6 +413,19 @@ export default {
   .slider .list .item .content h2 {
     font-size: 55px;
     font-weight: 700;
+  }
+  .arrows {
+    top: 50%;
+  }
+}
+
+  @media screen and (max-width: 500px) {
+  .thumbnail {
+    justify-content: start;
+  }
+  .slider .list .item .content p {
+    font-size: 12px;
+    font-weight: 600;
   }
   .arrows {
     top: 50%;
