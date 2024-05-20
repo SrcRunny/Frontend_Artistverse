@@ -53,8 +53,19 @@
           <select v-model="mood" class="ml-5 mr-5">
             <option value="Happy">Happy</option>
             <option value="Sad">Sad</option>
-            <option value="Fearful">Fearful</option>
-            <option value="Jazz">Jazz</option>
+            <option value="romantic">romantic</option>
+            <option value="inspirational">inspirational</option>
+            <option value="energetic">energetic</option>
+            <option value="chill">chill</option>
+            <option value="hopeful">hopeful</option>
+            <option value="reflective">reflective</option>
+            <option value="mysterious">mysterious</option>
+            <option value="dramatic">dramatic</option>
+            <option value="nostalgic">nostalgic</option>
+            <option value="playful">playful</option>
+            <option value="confident">confident</option>
+            <option value="dreamy">dreamy</option>
+            <option value="empowering">empowering</option>
           </select>
           <h2 class="text-xl">Language:</h2>
           <select v-model="language" class="ml-5">
@@ -87,6 +98,7 @@
           <pre v-if="lyrics" class="lyrics-container animate__animated animate__fadeIn">{{
             lyrics
           }}</pre>
+          <button v-if="lyrics" class="btn-save" @click="saveLyrics">Save Lyrics</button>
         </div>
       </div>
     </div>
@@ -125,6 +137,15 @@ export default {
         this.loading = false
         this.text = false
       }
+    },
+    saveLyrics() {
+      const blob = new Blob([this.lyrics], { type: 'text/plain' })
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = 'Lyrics.txt'
+      a.click()
+      URL.revokeObjectURL(url)
     }
   }
 }

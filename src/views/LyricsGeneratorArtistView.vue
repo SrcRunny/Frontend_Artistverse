@@ -52,9 +52,25 @@
           <h2 class="text-xl">Artist:</h2>
           <select v-model="artist" class="ml-5 mr-5">
             <option value="Taylor swift">Taylor swift</option>
-            <option value="Rock">Rock</option>
-            <option value="Indie">Indie</option>
-            <option value="Jazz">Jazz</option>
+            <option value="Billie Eilish">Billie Eilish</option>
+            <option value="Ed Sheeran">Ed Sheeran</option>
+            <option value="Justin Bieber">Justin Bieber</option>
+            <option value="The Weeknd">The Weeknd</option>
+            <option value="Maroon5">Maroon5</option>
+            <option value="Olivia Rodrigo">Olivia Rodrigo</option>
+            <option value="The 1975">The 1975</option>
+            <option value="Joji">Joji</option>
+            <option value="Keshi">Keshi</option>
+            <option value="Phum Viphurit">Phum Viphurit</option>
+            <option value="Potato">Potato</option>
+            <option value="Palmy">Palmy</option>
+            <option value="Big Ass">Big Ass</option>
+            <option value="Lula">Lula</option>
+            <option value="Lipta">Lipta</option>
+            <option value="Scrubb">Scrubb</option>
+            <option value="Stamp Apiwat">Stamp Apiwat</option>
+            <option value="Getsunova">Getsunova</option>
+            <option value="Da Endorphine">Da Endorphine</option>
           </select>
           <h2 class="text-xl">Language:</h2>
           <select v-model="language" class="ml-5">

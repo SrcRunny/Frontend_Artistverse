@@ -55,6 +55,17 @@
             <option value="Rock">Rock</option>
             <option value="Indie">Indie</option>
             <option value="Jazz">Jazz</option>
+            <option value="Country">Country</option>
+            <option value="R&B">R&B</option>
+            <option value="Hip-Hop">Hip-Hop</option>
+            <option value="Folk">Folk</option>
+            <option value="Electronic jazz">Electronic jazz</option>
+            <option value="Blues reggae">Blues reggae</option>
+            <option value="Classical">Classical</option>
+            <option value="Alternative">Alternative</option>
+            <option value="Gospel">Gospel</option>
+            <option value="Punk">Punk</option>
+            <option value="Rap">Rap</option>
           </select>
           <h2 class="text-xl">Language:</h2>
           <select v-model="language" class="ml-5">
@@ -87,6 +98,8 @@
           <pre v-if="lyrics" class="lyrics-container animate__animated animate__fadeIn">{{
             lyrics
           }}</pre>
+          <button v-if="lyrics" class="btn-save" @click="saveLyrics">Save Lyrics</button>
+
         </div>
       </div>
     </div>
@@ -125,6 +138,15 @@ export default {
         this.loading = false
         this.text = false
       }
+    },
+    saveLyrics() {
+      const blob = new Blob([this.lyrics], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Lyrics.txt';
+      a.click();
+      URL.revokeObjectURL(url);
     }
   }
 }

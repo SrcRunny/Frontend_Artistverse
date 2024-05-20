@@ -35,7 +35,9 @@
             <router-link to="/layoutview"
               ><li><a>Lyrics Generate</a></li></router-link
             >
-            <li><a>Delivery</a></li>
+            <router-link to="/recommend"
+              ><li><a>Camera Mood</a></li></router-link
+            >
             <li><a>Contact us</a></li>
           </ul>
         </div>
