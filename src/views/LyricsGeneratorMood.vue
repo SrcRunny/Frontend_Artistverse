@@ -152,6 +152,17 @@ export default {
 </script>
 
 <style scoped>
+.btn-save{
+  font-weight: 600;
+  color:rgb(0, 0, 0);
+  background-color: white;
+  position: relative;
+  padding: 3px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 5px;
+
+}
 .lyrics-container {
   max-height: 350px;
   overflow-y: auto;

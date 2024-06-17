@@ -156,8 +156,8 @@ export default {
 
 .video-feed {
   display: inline-block;
-  width: 100%; /* Modified */
-  max-width: 500px; /* Added */
+  width: 100%;
+  max-width: 500px; 
   border: solid rgb(255, 255, 255) 10px;
   border-radius: 20px;
   box-shadow: 0 0 40px rgba(231, 231, 231, 0.3);

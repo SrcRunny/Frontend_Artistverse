@@ -206,6 +206,17 @@ export default {
     height: 4px;
   }
 }
+.btn-save{
+  font-weight: 600;
+  color:rgb(0, 0, 0);
+  background-color: white;
+  position: relative;
+  padding: 3px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 5px;
+
+}
 .btn {
   display: flex;
   justify-content: center;
