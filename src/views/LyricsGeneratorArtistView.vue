@@ -47,6 +47,7 @@
           />
           <span class="input-border input-border-alt"></span>
         </div>
+        <div v-if="errors.prompt" class="error-message">{{ errors.prompt }}</div>
 
         <div class="dropdown mt-10">
           <h2 class="text-xl">Artist:</h2>
@@ -72,6 +73,8 @@
             <option value="Getsunova">Getsunova</option>
             <option value="Da Endorphine">Da Endorphine</option>
           </select>
+          <div v-if="errors.artist" class="error-message">{{ errors.artist }}</div>
+
           <h2 class="text-xl">Language:</h2>
           <select v-model="language" class="ml-5">
             <option value="Thai">Thai</option>
@@ -79,6 +82,8 @@
             <option value="Chinese">Chinese</option>
             <option value="Japanese">Japanese</option>
           </select>
+          <div v-if="errors.language" class="error-message">{{ errors.language }}</div>
+
         </div>
         <button class="btn" type="button" @click="generateLyrics">
           <strong>Generate</strong>
@@ -112,6 +117,8 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
+
 export default {
   data() {
     return {
@@ -120,11 +127,31 @@ export default {
       language: '',
       lyrics: '',
       loading: false,
-      text: true
+      text: true,
+      errors: {}
+
     }
   },
   methods: {
+    validateForm() {
+      this.errors = {};
+
+      if (!this.prompt) {
+        this.errors.prompt = "Please input a lyric topic.";
+      }
+      if (!this.artist) {
+        this.errors.artist = "Please select an artist.";
+      }
+      if (!this.language) {
+        this.errors.language = "Please select a language.";
+      }
+
+      return Object.keys(this.errors).length === 0;
+    },
     async generateLyrics() {
+      if (!this.validateForm()) {
+        return;
+      }
       try {
         this.loading = true
         const response = await fetch('http://127.0.0.1:5000/generate-lyrics-artist', {
@@ -139,10 +166,25 @@ export default {
           })
         })
 
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
         const data = await response.json()
         this.lyrics = data.lyrics
       } catch (error) {
         console.error('Error:', error)
+        if (error.message === 'Failed to fetch') {
+          Swal.fire({
+            icon: "error",
+            title: "Internet no connection",
+            text: "Unable to compose lyrics",
+            customClass: {
+              popup: 'swal2-top-center',
+            },
+            position: 'top',
+          });
+        }
       } finally {
         this.loading = false
         this.text = false
@@ -161,6 +203,22 @@ export default {
 }
 </script>
 <style scoped>
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  position: relative;
+}   
+.btn-save{
+  font-weight: 600;
+  color:rgb(0, 0, 0);
+  background-color: white;
+  position: relative;
+  padding: 3px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 5px;
+
+}
 .lyrics-container {
   max-height: 350px;
   overflow-y: auto;
@@ -206,17 +264,6 @@ export default {
     height: 4px;
   }
 }
-.btn-save{
-  font-weight: 600;
-  color:rgb(0, 0, 0);
-  background-color: white;
-  position: relative;
-  padding: 3px;
-  padding-left: 30px;
-  padding-right: 30px;
-  border-radius: 5px;
-
-}
 .btn {
   display: flex;
   justify-content: center;
@@ -235,7 +282,7 @@ export default {
   background-origin: border-box;
   background-clip: content-box, border-box;
   position: relative;
-  top: 100px;
+  top: 80px;
 }
 
 #container-stars {

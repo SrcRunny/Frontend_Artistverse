@@ -1,5 +1,6 @@
 <template>
   <div class="background">
+
     <div class="layout">
       <h1
         class="text-4xl md:text-5xl mt-8 animate__animated animate__fadeInDown animate__delay-1s"
@@ -47,10 +48,11 @@
           />
           <span class="input-border input-border-alt"></span>
         </div>
-
+        <div v-if="errors.prompt" class="error-message">{{ errors.prompt }}</div>
         <div class="dropdown mt-10">
           <h2 class="text-xl">Genre:</h2>
           <select v-model="genre" class="ml-5 mr-5">
+            <option value="">Select a genre</option>
             <option value="Pop">Pop</option>
             <option value="Rock">Rock</option>
             <option value="Indie">Indie</option>
@@ -67,20 +69,22 @@
             <option value="Punk">Punk</option>
             <option value="Rap">Rap</option>
           </select>
+          <div v-if="errors.genre" class="error-message">{{ errors.genre }}</div>
           <h2 class="text-xl">Language:</h2>
           <select v-model="language" class="ml-5">
+            <option value="">Select a language</option>
             <option value="Thai">Thai</option>
             <option value="English">English</option>
             <option value="Chinese">Chinese</option>
             <option value="Japanese">Japanese</option>
           </select>
+          <div v-if="errors.language" class="error-message">{{ errors.language }}</div>
         </div>
         <button class="btn" type="button" @click="generateLyrics">
           <strong>Generate</strong>
           <div id="container-stars">
             <div id="stars"></div>
           </div>
-
           <div id="glow">
             <div class="circle"></div>
             <div class="circle"></div>
@@ -93,13 +97,11 @@
       >
         <h1 v-if="text">Result</h1>
         <div v-if="loading" class="loader"></div>
-
         <div v-else>
           <pre v-if="lyrics" class="lyrics-container animate__animated animate__fadeIn">{{
             lyrics
           }}</pre>
           <button v-if="lyrics" class="btn-save" @click="saveLyrics">Save Lyrics</button>
-
         </div>
       </div>
     </div>
@@ -107,6 +109,8 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
+
 export default {
   data() {
     return {
@@ -115,11 +119,31 @@ export default {
       language: '',
       lyrics: '',
       loading: false,
-      text: true
+      text: true,
+      errors: {}
     }
   },
   methods: {
+    validateForm() {
+      this.errors = {};
+
+      if (!this.prompt) {
+        this.errors.prompt = "Please input a lyric topic.";
+      }
+      if (!this.genre) {
+        this.errors.genre = "Please select a genre.";
+      }
+      if (!this.language) {
+        this.errors.language = "Please select a language.";
+      }
+
+      return Object.keys(this.errors).length === 0;
+    },
     async generateLyrics() {
+      if (!this.validateForm()) {
+        return;
+      }
+
       try {
         this.loading = true
         const response = await fetch('http://127.0.0.1:5000/generate-lyrics-genre', {
@@ -130,10 +154,25 @@ export default {
           body: JSON.stringify({ prompt: this.prompt, genre: this.genre, language: this.language })
         })
 
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
         const data = await response.json()
         this.lyrics = data.lyrics
       } catch (error) {
         console.error('Error:', error)
+        if (error.message === 'Failed to fetch') {
+          Swal.fire({
+            icon: "error",
+            title: "Internet no connection",
+            text: "Unable to compose lyrics",
+            customClass: {
+              popup: 'swal2-top-center',
+            },
+            position: 'top',
+          });
+        }
       } finally {
         this.loading = false
         this.text = false
@@ -153,6 +192,11 @@ export default {
 </script>
 
 <style scoped>
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  position: relative;
+}   
 .btn-save{
   font-weight: 600;
   color:rgb(0, 0, 0);
@@ -227,7 +271,7 @@ export default {
   background-origin: border-box;
   background-clip: content-box, border-box;
   position: relative;
-  top: 100px;
+  top: 80px;
 }
 
 #container-stars {
@@ -441,7 +485,17 @@ select::after {
   left: 0;
   transition: width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
-
+.alert-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 1000;
+}
 .input:focus {
   outline: none;
 }
