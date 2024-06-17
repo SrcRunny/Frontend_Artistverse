@@ -179,13 +179,26 @@ export default {
       }
     },
     saveLyrics() {
-      const blob = new Blob([this.lyrics], { type: 'text/plain' })
-      const url = URL.createObjectURL(blob)
-      const a = document.createElement('a')
-      a.href = url
-      a.download = 'Lyrics.txt'
-      a.click()
-      URL.revokeObjectURL(url)
+      if (!navigator.onLine) {
+        Swal.fire({
+          icon: "error",
+          title: "No internet connection.",
+          text: "Unable to save lyrics",
+          customClass: {
+            popup: 'swal2-top-center',
+          },
+          position: 'top',
+        });
+        return;
+      }
+
+      const blob = new Blob([this.lyrics], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'MoodLyrics.txt';
+      a.click();
+      URL.revokeObjectURL(url);
     }
   }
 }
