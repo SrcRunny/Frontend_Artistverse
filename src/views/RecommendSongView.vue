@@ -5,9 +5,13 @@
       <div class="emotion-detector">
         <h2 class="subtitle">Emotion Detector</h2>
         <div class="video-container">
-          <img class="video-feed" :src="videoFeedURL" :key="videoFeedKey" />
+          <img v-if="hasCameraPermission" class="video-feed" :src="videoFeedURL" :key="videoFeedKey" />
+          <div v-else class="permission-message">
+            <p style="color: red;">*Camera access is required to detect your mood. Please allow camera access.</p>
+            <p style="color: red;">If you are allow already you can just reload this page</p>
+          </div>
         </div>
-        <div class="container1">
+        <div v-if="hasCameraPermission" class="container1">
           <button @click="startCountdown" :disabled="countingDown" class="button">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -34,8 +38,9 @@
             </svg>
           </button>
           <h3 v-if="countDown > 0" class="countdown">{{ countDown }}</h3>
-          <button @click="reset" class="reset-button btn btn-neutral">Reset</button>
+          <button v-if="showResetButton" @click="reset" class="reset-button btn btn-neutral">Reset</button>
           <h3 v-if="emotion" class="detected-emotion">Your emotion is: "{{ emotion }}"</h3>
+          <p v-if="errorMessage" class="error-message" style="color:red ; ">{{ errorMessage }}</p>
         </div>
       </div>
     </div>
@@ -72,13 +77,28 @@ export default {
       data: [],
       countingDown: false,
       emotion: null,
-      countDown: 0
+      countDown: 0,
+      hasCameraPermission: false,
+      showResetButton: false,
+      errorMessage: null 
     }
   },
   methods: {
+    requestCameraPermission() {
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then((stream) => {
+          this.hasCameraPermission = true;
+          stream.getTracks().forEach(track => track.stop());
+        })
+        .catch((error) => {
+          this.hasCameraPermission = false;
+          console.error('Error accessing camera:', error);
+        });
+    },
     startCountdown() {
       this.countDown = 5
       this.countingDown = true
+      this.showResetButton = true 
       const countdownInterval = setInterval(() => {
         if (this.countDown > 0) {
           this.countDown--
@@ -90,22 +110,33 @@ export default {
       }, 1000)
     },
     captureEmotion() {
-  fetch('http://127.0.0.1:5000/t')
-    .then((response) => response.json())
-    .then((data) => {
-      this.data = JSON.parse(data.songs);
-      this.emotion = data.emotion;
-    })
-    .catch((error) => {
-      console.error('Error capturing emotion:', error);
-    });
-},
+      fetch('http://127.0.0.1:5000/t')
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.emotion) {
+            this.data = JSON.parse(data.songs);
+            this.emotion = data.emotion;
+            this.errorMessage = null; 
+          } else {
+            this.errorMessage = "Mood could not be detected, Try again";
+          }
+        })
+        .catch((error) => {
+          console.error('Error capturing emotion:', error);
+          this.errorMessage = "Mood could not be detected, Try again"; 
+        });
+    },
     reset() {
       this.data = []
       this.emotion = null
       this.countDown = 0
       this.videoFeedKey++
+      this.showResetButton = false 
+      this.errorMessage = null 
     }
+  },
+  mounted() {
+    this.requestCameraPermission();
   }
 }
 </script>
