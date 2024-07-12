@@ -52,7 +52,7 @@
           <img src="../assets/guitarchord/Gguitar.png" alt="" />
         </div>
       </div>
-      <div class="content animate__animated animate__fadeIn">
+      <div class="content ">
         <h1 data-content="Guitar Chord">Guitar Chord</h1>
         <div class="author">
           <h2 style="color: grey">Please Select</h2>
@@ -293,7 +293,7 @@ export default {
 .banner .content .model {
   background-image: url(../assets/model.png);
   width: 100%;
-  height: 185vh;
+  height: 85vh;
   position: absolute;
   bottom: 0;
   left: 0;

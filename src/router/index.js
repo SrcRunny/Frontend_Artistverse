@@ -6,6 +6,7 @@ import LyricsGeneratorArtistView from '@/views/LyricsGeneratorArtistView.vue'
 import LayoutView from '../views/LayoutView.vue'
 import RecommendSongView from '@/views/RecommendSongView.vue'
 import GuitarChordView from '@/views/GuitarChordView.vue'
+import PianoChordView from '@/views/PianoChordView.vue'
 //for test
 import AssisatanceView from '@/views/AssisatanceView.vue'
 
@@ -52,6 +53,11 @@ const router = createRouter({
       path: '/guitarchord',
       name: 'guitarchord',
       component: GuitarChordView
+    },
+    {
+      path: '/pianochord',
+      name: 'pianochord',
+      component: PianoChordView
     }
   ]
   
