@@ -1,17 +1,16 @@
 <template>
   <div class="body">
-    <div class="banner">
-      <div class="slider" style="--quantity: 7">
-        <div class="item" style="--position: 1" @click="openModal(0)"><img src="../assets/guitarchord/Aguitar.png" alt="" /></div>
-        <div class="item" style="--position: 2" @click="openModal(1)"><img src="../assets/guitarchord/Bguitar.png" alt="" /></div>
-        <div class="item" style="--position: 3" @click="openModal(2)"><img src="../assets/guitarchord/Cguitar.png" alt="" /></div>
-        <div class="item" style="--position: 4" @click="openModal(3)"><img src="../assets/guitarchord/Dguitar.png" alt="" /></div>
-        <div class="item" style="--position: 5" @click="openModal(4)"><img src="../assets/guitarchord/Eguitar.png" alt="" /></div>
-        <div class="item" style="--position: 6" @click="openModal(5)"><img src="../assets/guitarchord/Fguitar.png" alt="" /></div>
-        <div class="item" style="--position: 7" @click="openModal(6)"><img src="../assets/guitarchord/Gguitar.png" alt="" /></div>
-
+    <div class="banner ">
+      <div class="slider " style="--quantity: 7">
+        <div class="item animate__animated animate__fadeIn animate__delay-1s" style="--position: 1;" @click="openModal(0)"><img src="../assets/guitarchord/Aguitar.png" alt="" /></div>
+        <div class="item animate__animated animate__fadeIn animate__delay-2s" style="--position: 2" @click="openModal(1)"><img src="../assets/guitarchord/Bguitar.png" alt="" /></div>
+        <div class="item animate__animated animate__fadeIn animate__delay-3s" style="--position: 3" @click="openModal(2)"><img src="../assets/guitarchord/Cguitar.png" alt="" /></div>
+        <div class="item animate__animated animate__fadeIn animate__delay-4s" style="--position: 4" @click="openModal(3)"><img src="../assets/guitarchord/Dguitar.png" alt="" /></div>
+        <div class="item animate__animated animate__fadeIn animate__delay-5s" style="--position: 5" @click="openModal(4)"><img src="../assets/guitarchord/Eguitar.png" alt="" /></div>
+        <div class="item animate__animated animate__fadeIn animate__delay-6s" style="--position: 6" @click="openModal(5)"><img src="../assets/guitarchord/Fguitar.png" alt="" /></div>
+        <div class="item animate__animated animate__fadeIn animate__delay-7s" style="--position: 7" @click="openModal(6)"><img src="../assets/guitarchord/Gguitar.png" alt="" /></div>
       </div>
-      <div class="content">
+      <div class="content animate__animated animate__fadeIn animate__delay-2s">
         <h1 data-content="Guitar Chord">Guitar Chord</h1>
         <div class="author">
           <h2 style="color: grey;">Please Select</h2>
@@ -20,10 +19,10 @@
       </div>
     </div>
     <dialog id="my_modal_2" class="modal">
-      <div class="modal-box">
+      <div class="modal-box ">
         <h3 class="text-lg; font-bold text-center">{{ modalData.title }}</h3>
         <img :src="modalData.imageSrc" alt="Image" />
-        <p class="py-4 text-center">{{ modalData.description }}</p>
+        <button class="py-2 px-4 mt-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600" @click="playSound">Listen Sound</button>
       </div>
       <form method="dialog" class="modal-backdrop">
         <button>close</button>
@@ -39,30 +38,36 @@ export default {
       modalData: {
         imageSrc: '',
         title: '',
-        description: ''
+        soundSrc: ''
       },
       images: [
-        { src: 'https://chordbank.com/cb4dg/artful_mae_1_750.png', title: 'A Chord', description: 'Description for Chord 1' },
-        { src: 'https://chordbank.com/cb4dg/bestial_skip_2_750.png', title: 'B Chord', description: 'Description for Chord 2' },
-        { src: 'https://chordbank.com/cb4dg/cagey_dani_1_750.png', title: 'C Chord', description: 'Description for Chord 3' },
-        { src: 'https://chordbank.com/cb4dg/acidic_mel_1_750.png', title: 'D Chord', description: 'Description for Chord 4' },
-        { src: 'https://chordbank.com/cb4dg/earthy_ian_1_750.png', title: 'E Chord', description: 'Description for Chord 5' },
-        { src: 'https://chordbank.com/cb4dg/grumpy_lulu_1_750.png', title: 'F Chord', description: 'Description for Chord 6' },
-        { src: 'https://chordbank.com/cb4dg/notable_cora_1_750.png', title: 'G Chord', description: 'Description for Chord 7' },
+        { src: 'https://chordbank.com/cb4dg/artful_mae_1_750.png', title: 'A Chord', soundSrc: 'src/assets/guitarsound/A.mp3' },
+        { src: 'https://chordbank.com/cb4dg/bestial_skip_2_750.png', title: 'B Chord', soundSrc: 'src/assets/guitarsound/B.mp3' },
+        { src: 'https://chordbank.com/cb4dg/cagey_dani_1_750.png', title: 'C Chord', soundSrc: 'src/assets/guitarsound/C.mp3' },
+        { src: 'https://chordbank.com/cb4dg/acidic_mel_1_750.png', title: 'D Chord', soundSrc: 'src/assets/guitarsound/D.mp3' },
+        { src: 'https://chordbank.com/cb4dg/earthy_ian_1_750.png', title: 'E Chord', soundSrc: 'src/assets/guitarsound/E.mp3' },
+        { src: 'https://chordbank.com/cb4dg/grumpy_lulu_1_750.png', title: 'F Chord', soundSrc: 'src/assets/guitarsound/F.mp3' },
+        { src: 'https://chordbank.com/cb4dg/notable_cora_1_750.png', title: 'G Chord', soundSrc: 'src/assets/guitarsound/G.mp3' },
       ]
     };
   },
   methods: {
     openModal(index) {
-      const image = this.images[index];
+      const chord = this.images[index];
       this.modalData = {
-        imageSrc: image.src,
-        title: image.title,
-        description: image.description
+        imageSrc: chord.src,
+        title: chord.title,
+        soundSrc: chord.soundSrc
       };
       this.$nextTick(() => {
         document.getElementById('my_modal_2').showModal();
       });
+    },
+    playSound() {
+      if (this.modalData.soundSrc) {
+        const audio = new Audio(this.modalData.soundSrc);
+        audio.play();
+      }
     },
     closeModal() {
       document.getElementById('my_modal_2').close();
