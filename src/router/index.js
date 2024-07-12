@@ -5,6 +5,7 @@ import LyricsGeneratorMoodView from '@/views/LyricsGeneratorMood.vue'
 import LyricsGeneratorArtistView from '@/views/LyricsGeneratorArtistView.vue'
 import LayoutView from '../views/LayoutView.vue'
 import RecommendSongView from '@/views/RecommendSongView.vue'
+import GuitarChordView from '@/views/GuitarChordView.vue'
 //for test
 import AssisatanceView from '@/views/AssisatanceView.vue'
 
@@ -46,6 +47,11 @@ const router = createRouter({
       path: '/recommend',
       name: 'recommend',
       component: RecommendSongView
+    },
+    {
+      path: '/guitarchord',
+      name: 'guitarchord',
+      component: GuitarChordView
     }
   ]
   

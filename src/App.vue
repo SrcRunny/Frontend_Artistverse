@@ -38,7 +38,9 @@
             <router-link to="/recommend"
               ><li><a>Camera Mood</a></li></router-link
             >
-            <li><a>Contact us</a></li>
+            <router-link to="/guitarchord"
+              ><li><a>Chord Progression</a></li></router-link
+            >
           </ul>
         </div>
       </div>
