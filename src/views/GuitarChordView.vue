@@ -92,7 +92,7 @@
             </router-link>
           </div>
         </div>
-        <div class="model"></div>
+        <div class="model animate__animated animate__fadeInDown"></div>
       </div>
     </div>
     <dialog id="my_modal_2" class="modal">

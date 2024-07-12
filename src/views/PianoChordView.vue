@@ -53,7 +53,7 @@
           </div>
         </div>
         <div class="content">
-          <h1 data-content="Piano Chord">Piano Chord</h1>
+          <h1 data-content="Piano Chords">Piano Chords</h1>
           <div class="author">
             <h2 style="color: grey">Please Select</h2>
             <div class="radiobtn" style="color: white">
@@ -92,7 +92,7 @@
               </router-link>
             </div>
           </div>
-          <div class="model"></div>
+          <div class="model animate__animated animate__fadeInDown"></div>
         </div>
       </div>
       <dialog id="my_modal_2" class="modal">
@@ -100,7 +100,7 @@
           <h3 style="font-size: 30px" class="text-lg; font-bold text-center">
             {{ modalData.title }}
           </h3>
-          <img style="height: auto; width: auto; margin-left: 60px" :src="modalData.imageSrc" alt="Image" />
+          <img  style="height: auto; width: auto; margin-left: 60px" :src="modalData.imageSrc" alt="Image" />
           <button type="button" class="btn btn-neutral btn-lg btn-block mt-4" @click="playSound">
             Listen Sound
           </button>
