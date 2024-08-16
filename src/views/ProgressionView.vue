@@ -1,8 +1,8 @@
 <template>
     <div class="body">
       <div class="result">
-        <h2>Major Keys Chord Table</h2>
-        <table>
+        <h2 class="animate__animated animate__fadeInDown animate__delay-1s">Major Keys Chord Table</h2>
+        <table class="animate__animated animate__fadeInUp animate__delay-1s">
           <thead>
             <tr>
               <th>Key</th>
@@ -28,7 +28,7 @@
               <td
                 v-for="(chord, chordIndex) in keyChords[key]"
                 :key="chord"
-                :class="{ highlighted: isChordHighlighted(keyIndex, chordIndex) }"
+                :class="{ highlighted: isChordHighlighted(keyIndex, chordIndex) } "
               >
                 {{ chord }}
               </td>
@@ -41,7 +41,7 @@
           <h2 class="head2">
             Selected Chord Progression: <span style="color: yellow; font-weight: bold;">{{ selectedProgression }}</span> in Key <span style="color: yellow; font-weight: bold;" >{{ selectedKey }}</span>
           </h2>
-          <div class="chord-set">
+          <div class="chord-set ">
             <div v-for="(chord, index) in displayedChords" :key="index" class="chord">
               <h3>{{ chord }}</h3>
               <img :src="getChordImage(chord)" :alt="chord + ' chord'" />
@@ -73,12 +73,12 @@
         selectedProgression: "2-5-1-6",
         keyChords: {
           C: ["C", "Dm", "Em", "F", "G", "Am", "Bdim"],
-          D: ["D", "Em", "F#m", "G", "A", "Bm", "C#dim"],
-          E: ["E", "F#m", "G#m", "A", "B", "C#m", "D#dim"],
+          D: ["D", "Em", "Gbm", "G", "A", "Bm", "C#dim"],
+          E: ["E", "Gbm", "Abm", "A", "B", "Dbm", "D#dim"],
           F: ["F", "Gm", "Am", "Bb", "C", "Dm", "Edim"],
           G: ["G", "Am", "Bm", "C", "D", "Em", "F#dim"],
-          A: ["A", "Bm", "C#m", "D", "E", "F#m", "G#dim"],
-          B: ["B", "C#m", "D#m", "E", "F#", "G#m", "A#dim"],
+          A: ["A", "Bm", "Dbm", "D", "E", "Gbm", "G#dim"],
+          B: ["B", "Dbm", "Ebm", "E", "Gb", "Abm", "A#dim"],
         },
         highlightedChords: [],
         displayedChords: [],
@@ -109,8 +109,8 @@
         return this.selectedProgression === progression;
       },
       getChordImage(chord) {
-        // Example implementation, assumes images are stored with the chord name as the filename
-        return `/path/to/chord/images/${chord}.png`;
+        console.log(chord)
+        return `src/assets/guitarchord/${chord}.png`;
       },
     },
   };
@@ -122,6 +122,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    animation-duration: 1s;
   }
   
   .body {
