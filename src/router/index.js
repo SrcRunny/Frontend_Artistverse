@@ -5,10 +5,10 @@ import LyricsGeneratorMoodView from '@/views/LyricsGeneratorMood.vue'
 import LyricsGeneratorArtistView from '@/views/LyricsGeneratorArtistView.vue'
 import LayoutView from '../views/LayoutView.vue'
 import RecommendSongView from '@/views/RecommendSongView.vue'
-import GuitarChordView from '@/views/GuitarChordView.vue'
-import PianoChordView from '@/views/PianoChordView.vue'
-import ChordProgressionView from'@/views/ChordProgressionView.vue'
-//for test
+// import GuitarChordView from '@/views/GuitarChordView.vue'
+// import PianoChordView from '@/views/PianoChordView.vue'
+// import ChordProgressionView from'@/views/ChordProgressionView.vue'
+import ProgressionView from '@/views/ProgressionView.vue'
 import AssisatanceView from '@/views/AssisatanceView.vue'
 
 const router = createRouter({
@@ -50,21 +50,26 @@ const router = createRouter({
       name: 'recommend',
       component: RecommendSongView
     },
+    // {
+    //   path: '/guitarchord',
+    //   name: 'guitarchord',
+    //   component: GuitarChordView
+    // },
+    // {
+    //   path: '/pianochord',
+    //   name: 'pianochord',
+    //   component: PianoChordView
+    // },
+    // {
+    //   path: '/chordprogression',
+    //   name: 'chordprogression',
+    //   component: ChordProgressionView
+    // },
     {
-      path: '/guitarchord',
-      name: 'guitarchord',
-      component: GuitarChordView
+      path: '/progression',
+      name: 'progression',
+      component: ProgressionView
     },
-    {
-      path: '/pianochord',
-      name: 'pianochord',
-      component: PianoChordView
-    },
-    {
-      path: '/chordprogression',
-      name: 'chordprogression',
-      component: ChordProgressionView
-    }
   ]
   
 })
