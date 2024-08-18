@@ -9,6 +9,7 @@ import RecommendSongView from '@/views/RecommendSongView.vue'
 // import PianoChordView from '@/views/PianoChordView.vue'
 // import ChordProgressionView from'@/views/ChordProgressionView.vue'
 import ProgressionView from '@/views/ProgressionView.vue'
+import ProgressionDetailView from '@/views/ProgressionDetailView.vue'
 import AssisatanceView from '@/views/AssisatanceView.vue'
 
 const router = createRouter({
@@ -69,6 +70,11 @@ const router = createRouter({
       path: '/progression',
       name: 'progression',
       component: ProgressionView
+    },
+    {
+      path: '/progressiondetail',
+      name: 'progressiondetail',
+      component: ProgressionDetailView
     },
   ]
   

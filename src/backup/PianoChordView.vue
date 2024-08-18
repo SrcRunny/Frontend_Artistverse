@@ -1,4 +1,4 @@
-<template>
+ <template>
     <div class="body">
       <div class="banner">
         <div class="slider" style="--quantity: 7">
