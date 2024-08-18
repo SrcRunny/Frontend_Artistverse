@@ -38,7 +38,7 @@
             <router-link to="/recommend"
               ><li><a>Camera Mood</a></li></router-link
             >
-            <router-link to="/progression"
+            <router-link to="/progressiondetail"
               ><li><a>Chord Progression</a></li></router-link
             >
             <router-link to="/ai-assistance"
