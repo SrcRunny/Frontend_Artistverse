@@ -1,10 +1,10 @@
 <template>
   <div class="background">
 <div class="body">
-  <button class="boton-elegante ">Chord Progression Chart</button>
-
+  <router-link to="/progression">
+  <button class="boton-elegante ">Click here to see Chord Progression Chart</button>
+</router-link> 
   <div class="container ">
-
     <div class="slide ">
       <div
         v-for="(item, index) in items"
@@ -103,8 +103,8 @@ export default {
 .boton-elegante {
   padding: 15px 30px;
   border: 2px solid #2c2c2c;
-  background-color: #1a1a1a;
-  color: #ffffff;
+  background-color: #e1f281;
+  color: #000000;
   font-size: 1.2rem;
   cursor: pointer;
   border-radius: 30px;
@@ -115,6 +115,12 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
+  box-shadow: 0 5px 30px #dbdbdb;
+  font-family: 'Avalors Personal Use';
+    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 0 0 4px white;
+
 }
 
 .boton-elegante::after {
@@ -140,6 +146,7 @@ export default {
 .boton-elegante:hover {
   border-color: #666666;
   background: #292929;
+  color: white;
 }
 
 
@@ -281,6 +288,7 @@ export default {
     position: absolute;
     bottom: 20px;
     color: white;
+    
 }
 
 .button button{
