@@ -1,37 +1,46 @@
 <template>
   <div class="background">
-<div class="body">
-  <router-link to="/progression">
-  <button class="boton-elegante ">Click here to see Chord Progression Chart</button>
-</router-link> 
-  <div class="container ">
-    <div class="slide ">
-      <div
-        v-for="(item, index) in items"
-        :key="index"
-        class="item"
-        :style="{ backgroundImage: 'url(' + item.imageUrl + ')' }"
-      >
-        <div class="content">
-          <div class="name">{{ item.name }}</div>
-          <div class="des">{{ item.description }}</div>
+    <div class="body">
+      <router-link to="/progression">
+        <button class="boton-elegante">Click here to see Chord Progression Chart</button>
+      </router-link>
+      <div class="container">
+        <div class="slide">
+          <div
+            v-for="(item, index) in items"
+            :key="index"
+            class="item"
+            :style="{ backgroundImage: 'url(' + item.imageUrl + ')' }"
+          >
+            <div class="content">
+              <div class="name">{{ item.name }}</div>
+              <div class="des">{{ item.description }}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation buttons -->
+        <div class="button">
+          <button class="prev" @click="prevSlide">
+            &#60;
+          </button>
+          <button class="next" @click="nextSlide">
+            &#62;
+          </button>
+        </div>
+
+        <!-- Page indicators -->
+        <div class="page-indicators">
+          <span
+            v-for="(item, index) in items"
+            :key="'dot-' + index"
+            :class="{ 'active': index === currentIndex }"
+            @click="goToSlide(index)"
+          ></span>
         </div>
       </div>
     </div>
-
-    <div class="button">
-      <button class="prev" @click="prevSlide">
-       &#60;
-      </button>
-      <button class="next" @click="nextSlide">
-        &#62;
-      </button>
-    </div>
   </div>
-</div>
-</div>
-
-  
 </template>
 
 <script>
@@ -85,7 +94,7 @@ export default {
           description: 'The 6-4-3-2 progression is less common and creates a more unique and haunting emotional effect. It starts with the minor sixth, leading through a descending sequence that can evoke feelings of tension, mystery, or melancholy. This progression is often used to create an unresolved or introspective mood.',
           imageUrl: 'https://i.pinimg.com/564x/31/70/a7/3170a72fcfebfda139f47f850445c6f9.jpg'
         }
-      ]
+      ],
     };
   },
   methods: {
