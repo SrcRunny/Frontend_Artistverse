@@ -46,9 +46,13 @@
         </h2>
         <div class="chord-set">
           <div v-for="(chord, index) in displayedChords" :key="index" class="chord">
-            <h3>{{ chord }}</h3>
-            <img :src="getChordImage(chord)" :alt="chord + ' chord'" />
-          </div>
+  <h3>{{ chord }}</h3>
+  <img
+    :src="getChordImage(chord)"
+    :alt="chord + ' chord'"
+    :class="{ highlighted: playingChordIndex === index }"
+  />
+</div>
           <div>
             <button class="sound" @click="playSound"></button>
           </div>
@@ -61,6 +65,7 @@
 <script>
 export default {
   data() {
+  
     return {
       notes: ["C", "D", "E", "F", "G", "A", "B"],
       progressions: [
@@ -86,6 +91,8 @@ export default {
       },
       highlightedChords: [],
       displayedChords: [],
+      playingChordIndex: -1, 
+
     };
   },
   methods: {
@@ -118,26 +125,31 @@ export default {
     },
 
     playSound() {
-  const audioFiles = this.displayedChords.map(chord => `src/assets/sounds/${chord}.mp3`);
-  const audioElements = audioFiles.map(file => {
-    const audio = new Audio(file);
-    audio.preload = "auto";
-    return audio;
-  });
+    const audioFiles = this.displayedChords.map(chord => `src/assets/sounds/${chord}.mp3`);
+    const audioElements = audioFiles.map(file => {
+      const audio = new Audio(file);
+      audio.preload = "auto";
+      return audio;
+    });
 
-  let index = 0;
+    let index = 0;
+    this.playingChordIndex = 0; // Start with the first chord
 
-  const playNextChord = () => {
-    if (index < audioElements.length) {
-      audioElements[index].play();
-      setTimeout(() => {
-        index++;
-        playNextChord();
-      }, 2000);
-    }
-  };
-  playNextChord();
-},
+    const playNextChord = () => {
+      if (index < audioElements.length) {
+        this.playingChordIndex = index; // Update the currently playing chord
+        audioElements[index].play();
+        setTimeout(() => {
+          index++;
+          playNextChord();
+        }, 2000); // Set the duration for each chord
+      } else {
+        this.playingChordIndex = -1; // Reset when all chords have been played
+      }
+    };
+
+    playNextChord();
+  },
 
 
   },
@@ -302,4 +314,11 @@ tr:nth-child(even) {
 .chord img:hover {
   transform: scale(1.1);
 }
+.highlighted {
+  transform: scale(1.1); 
+  border-color: #ff8c00; 
+  box-shadow: 0 0 15px 5px #ff8c00; 
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
 </style>
