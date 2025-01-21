@@ -54,8 +54,9 @@
   />
 </div>
           <div>
-            <button class="sound" @click="playSound"></button>
-          </div>
+<button class="sound" :disabled="isPlaying" @click="playSound">
+  
+</button>          </div>
         </div>
       </div>
     </div>
@@ -125,33 +126,37 @@ export default {
     },
 
     playSound() {
-    const audioFiles = this.displayedChords.map(chord => `src/assets/sounds/${chord}.mp3`);
-    const audioElements = audioFiles.map(file => {
-      const audio = new Audio(file);
-      audio.preload = "auto";
-      return audio;
-    });
+      if (this.isPlaying) return; // หากกำลังเล่นอยู่ ไม่ให้ทำงาน
 
-    let index = 0;
-    this.playingChordIndex = 0; // Start with the first chord
+      const audioFiles = this.displayedChords.map(
+        chord => `src/assets/sounds/${chord}.mp3`
+      );
+      const audioElements = audioFiles.map(file => {
+        const audio = new Audio(file);
+        audio.preload = "auto";
+        return audio;
+      });
 
-    const playNextChord = () => {
-      if (index < audioElements.length) {
-        this.playingChordIndex = index; // Update the currently playing chord
-        audioElements[index].play();
-        setTimeout(() => {
-          index++;
-          playNextChord();
-        }, 2000); // Set the duration for each chord
-      } else {
-        this.playingChordIndex = -1; // Reset when all chords have been played
-      }
-    };
+      let index = 0;
+      this.isPlaying = true; // ตั้งค่าสถานะเป็นกำลังเล่น
+      this.playingChordIndex = 0;
 
-    playNextChord();
-  },
+      const playNextChord = () => {
+        if (index < audioElements.length) {
+          this.playingChordIndex = index;
+          audioElements[index].play();
+          setTimeout(() => {
+            index++;
+            playNextChord();
+          }, 2000);
+        } else {
+          this.isPlaying = false; // ตั้งค่าสถานะเป็นไม่กำลังเล่น
+          this.playingChordIndex = -1;
+        }
+      };
 
-
+      playNextChord();
+    },
   },
 };
 </script>
@@ -254,6 +259,11 @@ th {
 
 tr:nth-child(even) {
   background-color: #2c2c2c;
+}
+button[disabled] {
+  background-color: gray;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .highlighted {
